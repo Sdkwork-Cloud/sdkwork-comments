@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "sdkwork.component.spec",
+  "component": {
+    "name": "@sdkwork/comments-service",
+    "displayName": "SDKWork Comments Service",
+    "version": "0.1.0",
+    "type": "node-package",
+    "root": "sdkwork-comments/packages/common/comments/sdkwork-comments-service",
+    "domain": "comments",
+    "declaredDomain": "comments",
+    "capability": "comments-service",
+    "status": "ready",
+    "languages": [
+      "typescript"
+    ],
+    "generated": false,
+    "private": true,
+    "manifests": [
+      "package.json"
+    ]
+  },
+  "canonicalSpecs": [
+    {
+      "file": "COMPONENT_SPEC.md",
+      "path": "D:\\javasource\\spring-ai-plus\\spring-ai-plus-business\\specs\\COMPONENT_SPEC.md",
+      "purpose": "Local component specs directory and manifest rules."
+    },
+    {
+      "file": "FRONTEND_SPEC.md",
+      "path": "D:\\javasource\\spring-ai-plus\\spring-ai-plus-business\\specs\\FRONTEND_SPEC.md",
+      "purpose": "UI to service to injected SDK client boundary."
+    },
+    {
+      "file": "MODULE_SPEC.md",
+      "path": "D:\\javasource\\spring-ai-plus\\spring-ai-plus-business\\specs\\MODULE_SPEC.md",
+      "purpose": "Reusable package contract and dependency direction."
+    },
+    {
+      "file": "SDK_SPEC.md",
+      "path": "D:\\javasource\\spring-ai-plus\\spring-ai-plus-business\\specs\\SDK_SPEC.md",
+      "purpose": "Generated SDK consumption and service facade rules."
+    },
+    {
+      "file": "TEST_SPEC.md",
+      "path": "D:\\javasource\\spring-ai-plus\\spring-ai-plus-business\\specs\\TEST_SPEC.md",
+      "purpose": "Service facade verification rules."
+    }
+  ],
+  "contracts": {
+    "publicExports": [
+      "."
+    ],
+    "runtimeEntrypoints": [
+      "package.json#scripts.test",
+      "package.json#scripts.typecheck"
+    ],
+    "routeManifest": null,
+    "sdkClients": [
+      "SdkworkCommentsAppSdkClient",
+      "SdkworkCommentsBackendSdkClient"
+    ],
+    "events": [],
+    "configKeys": [
+      "package.json#sdkwork"
+    ]
+  },
+  "integration": {
+    "authority": "sdkwork-comments owns comments service composition. sdkwork-appbase may consume it as an external package.",
+    "dependencyPolicy": "The service depends on comments contracts and injected generated SDK-shaped clients only.",
+    "sdkPolicy": "Missing SDK capabilities must be fixed in comments OpenAPI and regenerated SDKs; no raw HTTP fallback is allowed."
+  },
+  "verification": {
+    "commands": [
+      "pnpm --filter @sdkwork/comments-service test",
+      "pnpm --filter @sdkwork/comments-service typecheck"
+    ]
+  },
+  "metadata": {
+    "managedBy": "sdkwork-comments migration",
+    "standardVersion": "2026-06-06"
+  }
+}

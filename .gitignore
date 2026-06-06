@@ -1,0 +1,10 @@
+node_modules/
+target/
+dist/
+build/
+coverage/
+*.tgz
+*.log
+package-lock.json
+.DS_Store
+Thumbs.db

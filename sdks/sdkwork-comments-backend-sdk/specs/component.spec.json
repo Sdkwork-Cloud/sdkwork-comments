@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "name": "sdkwork-comments-backend-sdk",
+  "type": "sdk-family",
+  "domain": "comments",
+  "apiAuthority": "sdkwork-comments-backend-api",
+  "apiPrefix": "/backend/v3/api",
+  "sdkType": "backend",
+  "languages": [
+    "typescript"
+  ],
+  "generator": {
+    "package": "@sdkwork/sdk-generator",
+    "entrypoint": "D:\\javasource\\spring-ai-plus\\sdk\\sdkwork-sdk-generator\\bin\\sdkgen.js",
+    "standardProfile": "sdkwork-v3"
+  },
+  "contracts": {
+    "sdkDependencies": []
+  },
+  "auth": {
+    "mode": "dual-token",
+    "authTokenHeader": "Authorization",
+    "accessTokenHeader": "Access-Token",
+    "requestIdOwnership": "server"
+  },
+  "requestContextFramework": {
+    "apiSurface": "backend-api",
+    "contextType": "BackendRequestContext",
+    "resolver": "AuthTokenParser + AccessTokenParser"
+  }
+}

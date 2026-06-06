@@ -1,0 +1,8 @@
+packages:
+  - "packages/common/*/*"
+  - "packages/native-rust/*/*"
+  - "packages/native-rust/routes/*/*"
+  - "../../javasource/spring-ai-plus/sdk/sdkwork-sdk-commons/sdkwork-sdk-common-typescript"
+  - "sdks/*"
+  - "sdks/sdkwork-comments-app-sdk/sdkwork-comments-app-sdk-typescript/generated/server-openapi"
+  - "sdks/sdkwork-comments-backend-sdk/sdkwork-comments-backend-sdk-typescript/generated/server-openapi"

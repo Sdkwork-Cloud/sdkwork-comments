@@ -1,0 +1,22 @@
+{
+  "name": "@sdkwork/comments-workspace",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "packageManager": "pnpm@10.30.3",
+  "scripts": {
+    "test": "vitest run packages",
+    "test:contracts": "vitest run packages/common/comments/sdkwork-comments-contracts/tests/commentsContracts.test.ts",
+    "test:service": "vitest run packages/common/comments/sdkwork-comments-service/tests/commentsService.test.ts",
+    "test:governance": "node scripts/comments-governance.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "sdk:materialize": "node sdks/materialize-comments-v3-openapi-boundaries.mjs",
+    "sdk:generate:app": "powershell -ExecutionPolicy Bypass -File sdks/sdkwork-comments-app-sdk/bin/generate-sdk.ps1",
+    "sdk:generate:backend": "powershell -ExecutionPolicy Bypass -File sdks/sdkwork-comments-backend-sdk/bin/generate-sdk.ps1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.2",
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.2"
+  }
+}

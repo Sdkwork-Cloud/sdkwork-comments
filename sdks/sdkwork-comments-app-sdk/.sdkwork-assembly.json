@@ -1,0 +1,41 @@
+{
+  "workspace": "sdkwork-comments-app-sdk",
+  "title": "SDKWork Comments App API",
+  "apiVersion": "1.0.0",
+  "openapiVersion": "3.1.2",
+  "authoritySpec": "openapi/sdkwork-comments-app-api.openapi.yaml",
+  "generationInputSpec": "openapi/sdkwork-comments-app-api.sdkgen.yaml",
+  "derivedSpecs": {
+    "default": "openapi/sdkwork-comments-app-api.sdkgen.yaml"
+  },
+  "sdkOwner": "sdkwork-comments",
+  "apiAuthority": "sdkwork-comments-app-api",
+  "sdkDependencies": [],
+  "discoverySurface": {
+    "sdkTarget": "app",
+    "apiPrefix": "/app/v3/api",
+    "schemaUrl": "/app/v3/openapi.json",
+    "generatedProtocols": [
+      "http-openapi"
+    ],
+    "manualTransports": []
+  },
+  "languages": [
+    {
+      "language": "typescript",
+      "workspace": "sdkwork-comments-app-sdk-typescript",
+      "generationState": "ready",
+      "releaseState": "not_published",
+      "packagePath": "sdkwork-comments-app-sdk-typescript/generated/server-openapi",
+      "manifestPath": "sdkwork-comments-app-sdk-typescript/generated/server-openapi/package.json",
+      "name": "@sdkwork/comments-app-sdk",
+      "version": "1.0.0",
+      "description": "Generator-owned typescript transport SDK for SDKWork Comments App API.",
+      "generatedPath": "sdkwork-comments-app-sdk-typescript/generated/server-openapi"
+    }
+  ],
+  "metadata": {
+    "managedBy": "sdks/materialize-comments-v3-openapi-boundaries.mjs",
+    "standardVersion": "2026-06-06"
+  }
+}

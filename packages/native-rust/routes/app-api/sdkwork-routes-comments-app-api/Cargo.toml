@@ -1,0 +1,9 @@
+[package]
+name = "sdkwork-routes-comments-app-api"
+version = "0.1.0"
+edition = "2021"
+description = "SDKWork comments app-api route manifest."
+license = "MIT"
+
+[lib]
+path = "src/lib.rs"

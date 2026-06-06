@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "kind": "sdkwork.component.spec",
+  "component": {
+    "name": "sdkwork_comments_storage_sqlx",
+    "displayName": "SDKWork Comments Storage SQLx",
+    "version": "0.1.0",
+    "type": "rust-crate",
+    "root": "sdkwork-comments/packages/native-rust/comments/sdkwork-comments-storage-sqlx-rust",
+    "domain": "comments",
+    "declaredDomain": "comments",
+    "capability": "comments-storage",
+    "status": "ready",
+    "languages": [
+      "rust"
+    ],
+    "generated": false,
+    "private": false,
+    "manifests": [
+      "Cargo.toml"
+    ]
+  },
+  "canonicalSpecs": [
+    {
+      "file": "COMPONENT_SPEC.md",
+      "path": "D:\\javasource\\spring-ai-plus\\spring-ai-plus-business\\specs\\COMPONENT_SPEC.md",
+      "purpose": "Local component specs directory and manifest rules."
+    },
+    {
+      "file": "DATABASE_SPEC.md",
+      "path": "D:\\javasource\\spring-ai-plus\\spring-ai-plus-business\\specs\\DATABASE_SPEC.md",
+      "purpose": "Database naming, tenant, audit, lifecycle, migration, and index rules."
+    },
+    {
+      "file": "DOMAIN_SPEC.md",
+      "path": "D:\\javasource\\spring-ai-plus\\spring-ai-plus-business\\specs\\DOMAIN_SPEC.md",
+      "purpose": "Canonical domain ownership and naming."
+    },
+    {
+      "file": "MODULE_SPEC.md",
+      "path": "D:\\javasource\\spring-ai-plus\\spring-ai-plus-business\\specs\\MODULE_SPEC.md",
+      "purpose": "Reusable module contract and dependency direction."
+    },
+    {
+      "file": "TEST_SPEC.md",
+      "path": "D:\\javasource\\spring-ai-plus\\spring-ai-plus-business\\specs\\TEST_SPEC.md",
+      "purpose": "Rust storage contract verification rules."
+    }
+  ],
+  "contracts": {
+    "publicExports": [
+      "comments_storage_capability_manifest",
+      "comments_initial_migration_sql"
+    ],
+    "runtimeEntrypoints": [
+      "Cargo.toml"
+    ],
+    "routeManifest": null,
+    "sdkClients": [],
+    "events": [],
+    "configKeys": []
+  },
+  "integration": {
+    "authority": "sdkwork-comments owns comments database schema and migration contracts.",
+    "dependencyPolicy": "Consumers link the crate or run the migration; appbase must not keep duplicate comments storage.",
+    "sdkPolicy": "Persistence schema changes must remain aligned with comments OpenAPI and generated SDK DTOs."
+  },
+  "verification": {
+    "commands": [
+      "cargo test --manifest-path packages/native-rust/comments/sdkwork-comments-storage-sqlx-rust/Cargo.toml"
+    ]
+  },
+  "metadata": {
+    "managedBy": "sdkwork-comments migration",
+    "standardVersion": "2026-06-06"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@sdkwork/comments-contracts": [
+        "packages/common/comments/sdkwork-comments-contracts/src/index.ts"
+      ],
+      "@sdkwork/comments-service": [
+        "packages/common/comments/sdkwork-comments-service/src/index.ts"
+      ],
+      "@sdkwork/sdk-common": [
+        "../../javasource/spring-ai-plus/sdk/sdkwork-sdk-commons/sdkwork-sdk-common-typescript/src/index.ts"
+      ]
+    },
+    "allowImportingTsExtensions": true,
+    "ignoreDeprecations": "6.0",
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "types": [
+      "node"
+    ]
+  }
+}

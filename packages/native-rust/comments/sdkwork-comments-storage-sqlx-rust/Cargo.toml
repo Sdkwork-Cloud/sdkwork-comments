@@ -1,0 +1,9 @@
+[package]
+name = "sdkwork_comments_storage_sqlx"
+version = "0.1.0"
+edition = "2021"
+description = "SDKWork comments SQLx storage contracts and migrations."
+license = "MIT"
+
+[lib]
+path = "src/lib.rs"

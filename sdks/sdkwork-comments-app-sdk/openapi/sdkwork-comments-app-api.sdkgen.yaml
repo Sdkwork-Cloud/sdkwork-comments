@@ -1,0 +1,2728 @@
+{
+  "openapi": "3.1.2",
+  "info": {
+    "title": "SDKWork Comments App API",
+    "version": "1.0.0",
+    "description": "User-facing comments API for threads, comments, reactions, likes, favorites, and visit history.",
+    "x-sdkwork-api-authority": "sdkwork-comments-app-api",
+    "x-sdkwork-sdk-family": "sdkwork-comments-app-sdk",
+    "x-sdkwork-audience": "App, desktop, mobile, H5, and user-facing clients"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Local sdkwork-comments runtime"
+    }
+  ],
+  "tags": [
+    {
+      "name": "comments",
+      "description": "Comments thread, comment, reaction, and moderation resources.",
+      "x-sdk-nested-resource-surface": true
+    },
+    {
+      "name": "engagement",
+      "description": "Cross-content likes, favorites, visit history, and engagement summary resources.",
+      "x-sdk-nested-resource-surface": true
+    }
+  ],
+  "security": [
+    {
+      "AuthToken": [],
+      "AccessToken": []
+    }
+  ],
+  "paths": {
+    "/app/v3/api/comments/threads/{threadId}/summary": {
+      "get": {
+        "tags": [
+          "comments"
+        ],
+        "summary": "Get a comments thread summary.",
+        "operationId": "comments.threads.summary",
+        "parameters": [
+          {
+            "name": "threadId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentsThreadSummaryResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AuthToken": [],
+            "AccessToken": []
+          }
+        ],
+        "x-sdkwork-owner": "sdkwork-comments",
+        "x-sdkwork-api-authority": "sdkwork-comments-app-api",
+        "x-sdkwork-domain": "comments",
+        "x-sdkwork-resource": "comments.threads",
+        "x-sdkwork-permission": "comments.threads.read",
+        "x-sdkwork-tenant-scope": "tenant",
+        "x-sdkwork-data-scope": "organization",
+        "x-sdkwork-audit-event": "comments.thread.summary",
+        "x-sdkwork-idempotent": true,
+        "x-sdkwork-deployment": "all",
+        "x-sdkwork-request-context": "AppRequestContext",
+        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
+        "x-sdkwork-server-request-id": true
+      }
+    },
+    "/app/v3/api/comments/threads/{threadId}/comments": {
+      "get": {
+        "tags": [
+          "comments"
+        ],
+        "summary": "List comments in a thread.",
+        "operationId": "comments.comments.list",
+        "parameters": [
+          {
+            "name": "threadId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 200,
+              "default": 20
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/CommentStatus"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentsListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AuthToken": [],
+            "AccessToken": []
+          }
+        ],
+        "x-sdkwork-owner": "sdkwork-comments",
+        "x-sdkwork-api-authority": "sdkwork-comments-app-api",
+        "x-sdkwork-domain": "comments",
+        "x-sdkwork-resource": "comments.comments",
+        "x-sdkwork-permission": "comments.comments.read",
+        "x-sdkwork-tenant-scope": "tenant",
+        "x-sdkwork-data-scope": "organization",
+        "x-sdkwork-audit-event": "comments.comment.list",
+        "x-sdkwork-idempotent": true,
+        "x-sdkwork-deployment": "all",
+        "x-sdkwork-request-context": "AppRequestContext",
+        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
+        "x-sdkwork-server-request-id": true
+      },
+      "post": {
+        "tags": [
+          "comments"
+        ],
+        "summary": "Create a comment in a thread.",
+        "operationId": "comments.comments.create",
+        "parameters": [
+          {
+            "name": "threadId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AuthToken": [],
+            "AccessToken": []
+          }
+        ],
+        "x-sdkwork-owner": "sdkwork-comments",
+        "x-sdkwork-api-authority": "sdkwork-comments-app-api",
+        "x-sdkwork-domain": "comments",
+        "x-sdkwork-resource": "comments.comments",
+        "x-sdkwork-permission": "comments.comments.write",
+        "x-sdkwork-tenant-scope": "tenant",
+        "x-sdkwork-data-scope": "organization",
+        "x-sdkwork-audit-event": "comments.comment.create",
+        "x-sdkwork-idempotent": false,
+        "x-sdkwork-deployment": "all",
+        "x-sdkwork-request-context": "AppRequestContext",
+        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
+        "x-sdkwork-server-request-id": true,
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentCreateRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app/v3/api/comments/comments/{commentId}": {
+      "patch": {
+        "tags": [
+          "comments"
+        ],
+        "summary": "Update an existing comment.",
+        "operationId": "comments.comments.update",
+        "parameters": [
+          {
+            "name": "commentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AuthToken": [],
+            "AccessToken": []
+          }
+        ],
+        "x-sdkwork-owner": "sdkwork-comments",
+        "x-sdkwork-api-authority": "sdkwork-comments-app-api",
+        "x-sdkwork-domain": "comments",
+        "x-sdkwork-resource": "comments.comments",
+        "x-sdkwork-permission": "comments.comments.write",
+        "x-sdkwork-tenant-scope": "tenant",
+        "x-sdkwork-data-scope": "organization",
+        "x-sdkwork-audit-event": "comments.comment.update",
+        "x-sdkwork-idempotent": true,
+        "x-sdkwork-deployment": "all",
+        "x-sdkwork-request-context": "AppRequestContext",
+        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
+        "x-sdkwork-server-request-id": true,
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentUpdateRequest"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "comments"
+        ],
+        "summary": "Delete an existing comment.",
+        "operationId": "comments.comments.delete",
+        "parameters": [
+          {
+            "name": "commentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentDeleteResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AuthToken": [],
+            "AccessToken": []
+          }
+        ],
+        "x-sdkwork-owner": "sdkwork-comments",
+        "x-sdkwork-api-authority": "sdkwork-comments-app-api",
+        "x-sdkwork-domain": "comments",
+        "x-sdkwork-resource": "comments.comments",
+        "x-sdkwork-permission": "comments.comments.write",
+        "x-sdkwork-tenant-scope": "tenant",
+        "x-sdkwork-data-scope": "organization",
+        "x-sdkwork-audit-event": "comments.comment.delete",
+        "x-sdkwork-idempotent": true,
+        "x-sdkwork-deployment": "all",
+        "x-sdkwork-request-context": "AppRequestContext",
+        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
+        "x-sdkwork-server-request-id": true
+      }
+    },
+    "/app/v3/api/comments/comments/{commentId}/reactions/{reactionType}": {
+      "put": {
+        "tags": [
+          "comments"
+        ],
+        "summary": "Create or replace a comment reaction.",
+        "operationId": "comments.reactions.upsert",
+        "parameters": [
+          {
+            "name": "commentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reactionType",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/CommentReactionType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentReactionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AuthToken": [],
+            "AccessToken": []
+          }
+        ],
+        "x-sdkwork-owner": "sdkwork-comments",
+        "x-sdkwork-api-authority": "sdkwork-comments-app-api",
+        "x-sdkwork-domain": "comments",
+        "x-sdkwork-resource": "comments.reactions",
+        "x-sdkwork-permission": "comments.reactions.write",
+        "x-sdkwork-tenant-scope": "tenant",
+        "x-sdkwork-data-scope": "organization",
+        "x-sdkwork-audit-event": "comments.reaction.upsert",
+        "x-sdkwork-idempotent": true,
+        "x-sdkwork-deployment": "all",
+        "x-sdkwork-request-context": "AppRequestContext",
+        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
+        "x-sdkwork-server-request-id": true
+      },
+      "delete": {
+        "tags": [
+          "comments"
+        ],
+        "summary": "Delete a comment reaction.",
+        "operationId": "comments.reactions.delete",
+        "parameters": [
+          {
+            "name": "commentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reactionType",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/CommentReactionType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentReactionDeleteResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AuthToken": [],
+            "AccessToken": []
+          }
+        ],
+        "x-sdkwork-owner": "sdkwork-comments",
+        "x-sdkwork-api-authority": "sdkwork-comments-app-api",
+        "x-sdkwork-domain": "comments",
+        "x-sdkwork-resource": "comments.reactions",
+        "x-sdkwork-permission": "comments.reactions.write",
+        "x-sdkwork-tenant-scope": "tenant",
+        "x-sdkwork-data-scope": "organization",
+        "x-sdkwork-audit-event": "comments.reaction.delete",
+        "x-sdkwork-idempotent": true,
+        "x-sdkwork-deployment": "all",
+        "x-sdkwork-request-context": "AppRequestContext",
+        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
+        "x-sdkwork-server-request-id": true
+      }
+    },
+    "/app/v3/api/engagement/targets/{targetKind}/{targetId}/summary": {
+      "get": {
+        "tags": [
+          "engagement"
+        ],
+        "summary": "Get cross-content engagement summary for a target.",
+        "operationId": "engagement.targets.summary",
+        "parameters": [
+          {
+            "name": "targetKind",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/EngagementTargetKind"
+            }
+          },
+          {
+            "name": "targetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EngagementSummaryResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AuthToken": [],
+            "AccessToken": []
+          }
+        ],
+        "x-sdkwork-owner": "sdkwork-comments",
+        "x-sdkwork-api-authority": "sdkwork-comments-app-api",
+        "x-sdkwork-domain": "comments",
+        "x-sdkwork-resource": "engagement.targets",
+        "x-sdkwork-permission": "engagement.read",
+        "x-sdkwork-tenant-scope": "tenant",
+        "x-sdkwork-data-scope": "organization",
+        "x-sdkwork-audit-event": "engagement.target.summary",
+        "x-sdkwork-idempotent": true,
+        "x-sdkwork-deployment": "all",
+        "x-sdkwork-request-context": "AppRequestContext",
+        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
+        "x-sdkwork-server-request-id": true
+      }
+    },
+    "/app/v3/api/engagement/targets/{targetKind}/{targetId}/likes": {
+      "put": {
+        "tags": [
+          "engagement"
+        ],
+        "summary": "Like any supported content target.",
+        "operationId": "engagement.likes.upsert",
+        "parameters": [
+          {
+            "name": "targetKind",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/EngagementTargetKind"
+            }
+          },
+          {
+            "name": "targetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EngagementReactionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AuthToken": [],
+            "AccessToken": []
+          }
+        ],
+        "x-sdkwork-owner": "sdkwork-comments",
+        "x-sdkwork-api-authority": "sdkwork-comments-app-api",
+        "x-sdkwork-domain": "comments",
+        "x-sdkwork-resource": "engagement.likes",
+        "x-sdkwork-permission": "engagement.write",
+        "x-sdkwork-tenant-scope": "tenant",
+        "x-sdkwork-data-scope": "organization",
+        "x-sdkwork-audit-event": "engagement.like.upsert",
+        "x-sdkwork-idempotent": true,
+        "x-sdkwork-deployment": "all",
+        "x-sdkwork-request-context": "AppRequestContext",
+        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
+        "x-sdkwork-server-request-id": true
+      },
+      "delete": {
+        "tags": [
+          "engagement"
+        ],
+        "summary": "Remove a like from any supported content target.",
+        "operationId": "engagement.likes.delete",
+        "parameters": [
+          {
+            "name": "targetKind",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/EngagementTargetKind"
+            }
+          },
+          {
+            "name": "targetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EngagementReactionDeleteResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AuthToken": [],
+            "AccessToken": []
+          }
+        ],
+        "x-sdkwork-owner": "sdkwork-comments",
+        "x-sdkwork-api-authority": "sdkwork-comments-app-api",
+        "x-sdkwork-domain": "comments",
+        "x-sdkwork-resource": "engagement.likes",
+        "x-sdkwork-permission": "engagement.write",
+        "x-sdkwork-tenant-scope": "tenant",
+        "x-sdkwork-data-scope": "organization",
+        "x-sdkwork-audit-event": "engagement.like.delete",
+        "x-sdkwork-idempotent": true,
+        "x-sdkwork-deployment": "all",
+        "x-sdkwork-request-context": "AppRequestContext",
+        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
+        "x-sdkwork-server-request-id": true
+      }
+    },
+    "/app/v3/api/engagement/targets/{targetKind}/{targetId}/favorites": {
+      "put": {
+        "tags": [
+          "engagement"
+        ],
+        "summary": "Favorite any supported content target.",
+        "operationId": "engagement.favorites.upsert",
+        "parameters": [
+          {
+            "name": "targetKind",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/EngagementTargetKind"
+            }
+          },
+          {
+            "name": "targetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EngagementFavoriteResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AuthToken": [],
+            "AccessToken": []
+          }
+        ],
+        "x-sdkwork-owner": "sdkwork-comments",
+        "x-sdkwork-api-authority": "sdkwork-comments-app-api",
+        "x-sdkwork-domain": "comments",
+        "x-sdkwork-resource": "engagement.favorites",
+        "x-sdkwork-permission": "engagement.write",
+        "x-sdkwork-tenant-scope": "tenant",
+        "x-sdkwork-data-scope": "organization",
+        "x-sdkwork-audit-event": "engagement.favorite.upsert",
+        "x-sdkwork-idempotent": true,
+        "x-sdkwork-deployment": "all",
+        "x-sdkwork-request-context": "AppRequestContext",
+        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
+        "x-sdkwork-server-request-id": true
+      },
+      "delete": {
+        "tags": [
+          "engagement"
+        ],
+        "summary": "Remove a favorite from any supported content target.",
+        "operationId": "engagement.favorites.delete",
+        "parameters": [
+          {
+            "name": "targetKind",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/EngagementTargetKind"
+            }
+          },
+          {
+            "name": "targetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EngagementFavoriteDeleteResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AuthToken": [],
+            "AccessToken": []
+          }
+        ],
+        "x-sdkwork-owner": "sdkwork-comments",
+        "x-sdkwork-api-authority": "sdkwork-comments-app-api",
+        "x-sdkwork-domain": "comments",
+        "x-sdkwork-resource": "engagement.favorites",
+        "x-sdkwork-permission": "engagement.write",
+        "x-sdkwork-tenant-scope": "tenant",
+        "x-sdkwork-data-scope": "organization",
+        "x-sdkwork-audit-event": "engagement.favorite.delete",
+        "x-sdkwork-idempotent": true,
+        "x-sdkwork-deployment": "all",
+        "x-sdkwork-request-context": "AppRequestContext",
+        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
+        "x-sdkwork-server-request-id": true
+      }
+    },
+    "/app/v3/api/engagement/targets/{targetKind}/{targetId}/visits": {
+      "post": {
+        "tags": [
+          "engagement"
+        ],
+        "summary": "Record a visit for any supported content target.",
+        "operationId": "engagement.visits.create",
+        "parameters": [
+          {
+            "name": "targetKind",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/EngagementTargetKind"
+            }
+          },
+          {
+            "name": "targetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EngagementVisitResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AuthToken": [],
+            "AccessToken": []
+          }
+        ],
+        "x-sdkwork-owner": "sdkwork-comments",
+        "x-sdkwork-api-authority": "sdkwork-comments-app-api",
+        "x-sdkwork-domain": "comments",
+        "x-sdkwork-resource": "engagement.visits",
+        "x-sdkwork-permission": "engagement.write",
+        "x-sdkwork-tenant-scope": "tenant",
+        "x-sdkwork-data-scope": "organization",
+        "x-sdkwork-audit-event": "engagement.visit.create",
+        "x-sdkwork-idempotent": false,
+        "x-sdkwork-deployment": "all",
+        "x-sdkwork-request-context": "AppRequestContext",
+        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
+        "x-sdkwork-server-request-id": true,
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EngagementVisitCreateRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app/v3/api/engagement/visits": {
+      "get": {
+        "tags": [
+          "engagement"
+        ],
+        "summary": "List the current user's cross-content visit history.",
+        "operationId": "engagement.visits.list",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 200,
+              "default": 20
+            }
+          },
+          {
+            "name": "target_kind",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/EngagementTargetKind"
+            }
+          },
+          {
+            "name": "target_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EngagementVisitListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "AuthToken": [],
+            "AccessToken": []
+          }
+        ],
+        "x-sdkwork-owner": "sdkwork-comments",
+        "x-sdkwork-api-authority": "sdkwork-comments-app-api",
+        "x-sdkwork-domain": "comments",
+        "x-sdkwork-resource": "engagement.visits",
+        "x-sdkwork-permission": "engagement.read",
+        "x-sdkwork-tenant-scope": "tenant",
+        "x-sdkwork-data-scope": "organization",
+        "x-sdkwork-audit-event": "engagement.visit.list",
+        "x-sdkwork-idempotent": true,
+        "x-sdkwork-deployment": "all",
+        "x-sdkwork-request-context": "AppRequestContext",
+        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
+        "x-sdkwork-server-request-id": true
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "AuthToken": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "SDKWork auth token carried as Authorization: Bearer <auth_token>."
+      },
+      "AccessToken": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Access-Token",
+        "description": "SDKWork access isolation token."
+      }
+    },
+    "schemas": {
+      "ProblemDetail": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "type",
+          "title",
+          "status"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "format": "uri-reference"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 599
+          },
+          "detail": {
+            "type": "string"
+          },
+          "instance": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "traceId": {
+            "type": "string"
+          },
+          "requestId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Server-owned request correlation id."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FieldError"
+            }
+          }
+        }
+      },
+      "FieldError": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "field",
+          "message"
+        ],
+        "properties": {
+          "field": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          }
+        }
+      },
+      "CommentOwnerKind": {
+        "type": "string",
+        "enum": [
+          "article",
+          "course-lesson",
+          "market-item",
+          "news-item",
+          "social-post",
+          "video"
+        ]
+      },
+      "CommentStatus": {
+        "type": "string",
+        "enum": [
+          "deleted",
+          "hidden",
+          "pending-review",
+          "published"
+        ]
+      },
+      "CommentReactionType": {
+        "type": "string",
+        "enum": [
+          "dislike",
+          "flag",
+          "heart",
+          "like"
+        ]
+      },
+      "EngagementTargetKind": {
+        "type": "string",
+        "enum": [
+          "article",
+          "comment",
+          "course-lesson",
+          "market-item",
+          "news-item",
+          "social-post",
+          "thread",
+          "video"
+        ]
+      },
+      "CommentsThread": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "ownerId",
+          "ownerKind",
+          "tenantId"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "tenantId": {
+            "type": "string"
+          },
+          "ownerId": {
+            "type": "string"
+          },
+          "ownerKind": {
+            "$ref": "#/components/schemas/CommentOwnerKind"
+          },
+          "title": {
+            "type": "string"
+          },
+          "locked": {
+            "type": "boolean",
+            "default": false
+          },
+          "closedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Comment": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "threadId",
+          "authorId",
+          "body",
+          "status",
+          "createdAt"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "threadId": {
+            "type": "string"
+          },
+          "parentId": {
+            "type": "string"
+          },
+          "authorId": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/CommentStatus"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deletedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "CommentReaction": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "commentId",
+          "userId",
+          "reactionType",
+          "createdAt"
+        ],
+        "properties": {
+          "commentId": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "reactionType": {
+            "$ref": "#/components/schemas/CommentReactionType"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "EngagementReaction": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "targetKind",
+          "targetId",
+          "userId",
+          "reactionType",
+          "createdAt"
+        ],
+        "properties": {
+          "targetKind": {
+            "$ref": "#/components/schemas/EngagementTargetKind"
+          },
+          "targetId": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "reactionType": {
+            "$ref": "#/components/schemas/CommentReactionType"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "EngagementFavorite": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "targetKind",
+          "targetId",
+          "userId",
+          "createdAt"
+        ],
+        "properties": {
+          "targetKind": {
+            "$ref": "#/components/schemas/EngagementTargetKind"
+          },
+          "targetId": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "EngagementVisit": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "visitId",
+          "targetKind",
+          "targetId",
+          "userId",
+          "createdAt"
+        ],
+        "properties": {
+          "visitId": {
+            "type": "string"
+          },
+          "targetKind": {
+            "$ref": "#/components/schemas/EngagementTargetKind"
+          },
+          "targetId": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "CommentReactionCounts": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0
+        },
+        "properties": {
+          "dislike": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "flag": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "heart": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "like": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          }
+        }
+      },
+      "EngagementSummary": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "targetKind",
+          "targetId",
+          "reactionCounts",
+          "favoriteCount",
+          "visitCount",
+          "uniqueVisitorCount",
+          "latestActivityAt"
+        ],
+        "properties": {
+          "targetKind": {
+            "$ref": "#/components/schemas/EngagementTargetKind"
+          },
+          "targetId": {
+            "type": "string"
+          },
+          "reactionCounts": {
+            "$ref": "#/components/schemas/CommentReactionCounts"
+          },
+          "favoriteCount": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "visitCount": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "uniqueVisitorCount": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "latestActivityAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "CommentsThreadSummary": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "threadId",
+          "tenantId",
+          "ownerId",
+          "ownerKind",
+          "totalCount",
+          "publishedCount",
+          "pendingReviewCount",
+          "hiddenCount",
+          "replyCount",
+          "reactionCounts",
+          "latestActivityAt"
+        ],
+        "properties": {
+          "threadId": {
+            "type": "string"
+          },
+          "tenantId": {
+            "type": "string"
+          },
+          "ownerId": {
+            "type": "string"
+          },
+          "ownerKind": {
+            "$ref": "#/components/schemas/CommentOwnerKind"
+          },
+          "title": {
+            "type": "string"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "publishedCount": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "pendingReviewCount": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "hiddenCount": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "replyCount": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "reactionCounts": {
+            "$ref": "#/components/schemas/CommentReactionCounts"
+          },
+          "latestActivityAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "CommentsPageInfo": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "page",
+          "pageSize",
+          "totalItems",
+          "totalPages"
+        ],
+        "properties": {
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 1
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 1,
+            "maximum": 200
+          },
+          "totalItems": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 1
+          }
+        }
+      },
+      "CommentCreateRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "body"
+        ],
+        "properties": {
+          "body": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 20000
+          },
+          "parentId": {
+            "type": "string"
+          }
+        }
+      },
+      "CommentUpdateRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "body"
+        ],
+        "properties": {
+          "body": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 20000
+          }
+        }
+      },
+      "CommentModerationRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "status"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "hidden",
+              "pending-review",
+              "published"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      },
+      "CommentResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "comment",
+          "requestId"
+        ],
+        "properties": {
+          "comment": {
+            "$ref": "#/components/schemas/Comment"
+          },
+          "requestId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Server-owned request correlation id."
+          }
+        }
+      },
+      "CommentDeleteResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "commentId",
+          "deleted",
+          "requestId"
+        ],
+        "properties": {
+          "commentId": {
+            "type": "string"
+          },
+          "deleted": {
+            "type": "boolean"
+          },
+          "requestId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Server-owned request correlation id."
+          }
+        }
+      },
+      "CommentReactionResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reaction",
+          "requestId"
+        ],
+        "properties": {
+          "reaction": {
+            "$ref": "#/components/schemas/CommentReaction"
+          },
+          "requestId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Server-owned request correlation id."
+          }
+        }
+      },
+      "CommentReactionDeleteResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "commentId",
+          "reactionType",
+          "deleted",
+          "requestId"
+        ],
+        "properties": {
+          "commentId": {
+            "type": "string"
+          },
+          "reactionType": {
+            "$ref": "#/components/schemas/CommentReactionType"
+          },
+          "deleted": {
+            "type": "boolean"
+          },
+          "requestId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Server-owned request correlation id."
+          }
+        }
+      },
+      "EngagementReactionResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reaction",
+          "requestId"
+        ],
+        "properties": {
+          "reaction": {
+            "$ref": "#/components/schemas/EngagementReaction"
+          },
+          "requestId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Server-owned request correlation id."
+          }
+        }
+      },
+      "EngagementReactionDeleteResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "targetKind",
+          "targetId",
+          "reactionType",
+          "deleted",
+          "requestId"
+        ],
+        "properties": {
+          "targetKind": {
+            "$ref": "#/components/schemas/EngagementTargetKind"
+          },
+          "targetId": {
+            "type": "string"
+          },
+          "reactionType": {
+            "type": "string",
+            "enum": [
+              "like"
+            ]
+          },
+          "deleted": {
+            "type": "boolean"
+          },
+          "requestId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Server-owned request correlation id."
+          }
+        }
+      },
+      "EngagementFavoriteResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "favorite",
+          "requestId"
+        ],
+        "properties": {
+          "favorite": {
+            "$ref": "#/components/schemas/EngagementFavorite"
+          },
+          "requestId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Server-owned request correlation id."
+          }
+        }
+      },
+      "EngagementFavoriteDeleteResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "targetKind",
+          "targetId",
+          "deleted",
+          "requestId"
+        ],
+        "properties": {
+          "targetKind": {
+            "$ref": "#/components/schemas/EngagementTargetKind"
+          },
+          "targetId": {
+            "type": "string"
+          },
+          "deleted": {
+            "type": "boolean"
+          },
+          "requestId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Server-owned request correlation id."
+          }
+        }
+      },
+      "EngagementVisitCreateRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "source": {
+            "type": "string",
+            "maxLength": 128
+          }
+        }
+      },
+      "EngagementVisitResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "visit",
+          "requestId"
+        ],
+        "properties": {
+          "visit": {
+            "$ref": "#/components/schemas/EngagementVisit"
+          },
+          "requestId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Server-owned request correlation id."
+          }
+        }
+      },
+      "EngagementSummaryResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "summary",
+          "requestId"
+        ],
+        "properties": {
+          "summary": {
+            "$ref": "#/components/schemas/EngagementSummary"
+          },
+          "requestId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Server-owned request correlation id."
+          }
+        }
+      },
+      "CommentsListResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "items",
+          "pageInfo",
+          "requestId"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Comment"
+            }
+          },
+          "pageInfo": {
+            "$ref": "#/components/schemas/CommentsPageInfo"
+          },
+          "requestId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Server-owned request correlation id."
+          }
+        }
+      },
+      "EngagementVisitListResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "items",
+          "pageInfo",
+          "requestId"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EngagementVisit"
+            }
+          },
+          "pageInfo": {
+            "$ref": "#/components/schemas/CommentsPageInfo"
+          },
+          "requestId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Server-owned request correlation id."
+          }
+        }
+      },
+      "CommentsThreadSummaryResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "summary",
+          "requestId"
+        ],
+        "properties": {
+          "summary": {
+            "$ref": "#/components/schemas/CommentsThreadSummary"
+          },
+          "requestId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Server-owned request correlation id."
+          }
+        }
+      },
+      "CommentsThreadListResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "items",
+          "pageInfo",
+          "requestId"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CommentsThread"
+            }
+          },
+          "pageInfo": {
+            "$ref": "#/components/schemas/CommentsPageInfo"
+          },
+          "requestId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Server-owned request correlation id."
+          }
+        }
+      },
+      "CommentModerationCase": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "threadId",
+          "commentId",
+          "status",
+          "createdAt"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "threadId": {
+            "type": "string"
+          },
+          "commentId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "closed",
+              "open"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "CommentModerationCaseListResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "items",
+          "pageInfo",
+          "requestId"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CommentModerationCase"
+            }
+          },
+          "pageInfo": {
+            "$ref": "#/components/schemas/CommentsPageInfo"
+          },
+          "requestId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Server-owned request correlation id."
+          }
+        }
+      },
+      "CommentModerationEvent": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "commentId",
+          "actorId",
+          "status",
+          "createdAt"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "commentId": {
+            "type": "string"
+          },
+          "actorId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "hidden",
+              "pending-review",
+              "published"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "CommentModerationResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "comment",
+          "moderationEvent",
+          "requestId"
+        ],
+        "properties": {
+          "comment": {
+            "$ref": "#/components/schemas/Comment"
+          },
+          "moderationEvent": {
+            "$ref": "#/components/schemas/CommentModerationEvent"
+          },
+          "requestId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Server-owned request correlation id."
+          }
+        }
+      }
+    }
+  },
+  "x-sdkwork-materialized-from": [
+    {
+      "owner": "sdkwork-comments",
+      "path": "packages/native-rust/routes/app-api/sdkwork-routes-comments-app-api"
+    }
+  ],
+  "x-sdkwork-request-context": {
+    "contextObject": "AppRequestContext",
+    "serverRequestId": "server-owned",
+    "clientRequestIdHeader": "forbidden",
+    "tenantSource": "AuthToken + AccessToken",
+    "organizationSource": "AuthToken + AccessToken",
+    "userSource": "AuthToken + AccessToken"
+  },
+  "x-sdkwork-derived-from": "openapi/sdkwork-comments-app-api.openapi.yaml"
+}
