@@ -3,8 +3,7 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const GENERATOR_PATH =
-  "D:\\javasource\\spring-ai-plus\\sdk\\sdkwork-sdk-generator\\bin\\sdkgen.js";
+const GENERATOR_PATH = path.resolve(ROOT, "../sdkwork-sdk-generator/bin/sdkgen.js");
 const VERSION = "1.0.0";
 const OWNER = "sdkwork-comments";
 const DOMAIN = "comments";

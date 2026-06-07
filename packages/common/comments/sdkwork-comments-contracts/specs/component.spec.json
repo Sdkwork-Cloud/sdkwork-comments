@@ -23,27 +23,27 @@
   "canonicalSpecs": [
     {
       "file": "COMPONENT_SPEC.md",
-      "path": "D:\\javasource\\spring-ai-plus\\spring-ai-plus-business\\specs\\COMPONENT_SPEC.md",
+      "path": "../../../../../../sdkwork-specs/COMPONENT_SPEC.md",
       "purpose": "Local component specs directory and manifest rules."
     },
     {
       "file": "DOMAIN_SPEC.md",
-      "path": "D:\\javasource\\spring-ai-plus\\spring-ai-plus-business\\specs\\DOMAIN_SPEC.md",
+      "path": "../../../../../../sdkwork-specs/DOMAIN_SPEC.md",
       "purpose": "Canonical domain ownership and naming."
     },
     {
       "file": "MODULE_SPEC.md",
-      "path": "D:\\javasource\\spring-ai-plus\\spring-ai-plus-business\\specs\\MODULE_SPEC.md",
+      "path": "../../../../../../sdkwork-specs/MODULE_SPEC.md",
       "purpose": "Reusable package contract and dependency direction."
     },
     {
       "file": "SDK_SPEC.md",
-      "path": "D:\\javasource\\spring-ai-plus\\spring-ai-plus-business\\specs\\SDK_SPEC.md",
+      "path": "../../../../../../sdkwork-specs/SDK_SPEC.md",
       "purpose": "Generated SDK and service facade boundaries."
     },
     {
       "file": "TEST_SPEC.md",
-      "path": "D:\\javasource\\spring-ai-plus\\spring-ai-plus-business\\specs\\TEST_SPEC.md",
+      "path": "../../../../../../sdkwork-specs/TEST_SPEC.md",
       "purpose": "Package contract verification rules."
     },
     {

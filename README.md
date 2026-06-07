@@ -25,7 +25,7 @@ Generated TypeScript SDKs expose two business roots:
 Both SDK families use the canonical generator:
 
 ```text
-D:\javasource\spring-ai-plus\sdk\sdkwork-sdk-generator\bin\sdkgen.js
+..\sdkwork-sdk-generator\bin\sdkgen.js
 ```
 
 ## Verification

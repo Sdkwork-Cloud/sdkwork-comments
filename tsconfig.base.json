@@ -16,7 +16,7 @@
         "packages/common/comments/sdkwork-comments-service/src/index.ts"
       ],
       "@sdkwork/sdk-common": [
-        "../../javasource/spring-ai-plus/sdk/sdkwork-sdk-commons/sdkwork-sdk-common-typescript/src/index.ts"
+        "../sdkwork-sdk-commons/sdkwork-sdk-common-typescript/src/index.ts"
       ]
     },
     "allowImportingTsExtensions": true,
