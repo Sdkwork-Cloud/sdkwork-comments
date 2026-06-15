@@ -1,0 +1,517 @@
+{
+  "kind": "sdkwork.route.manifest",
+  "packageName": "sdkwork-router-comments-app-api",
+  "surface": "app-api",
+  "owner": "sdkwork-comments",
+  "domain": "comments",
+  "capability": "comments",
+  "apiAuthority": "sdkwork-comments-app-api",
+  "sdkFamily": "sdkwork-comments-app-sdk",
+  "prefix": "/app/v3/api",
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/app/v3/api/comments/threads/{threadId}/summary",
+      "operationId": "comments.threads.summary",
+      "tags": [
+        "comments"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true,
+        "permission": "comments.threads.read",
+        "tenantScope": "tenant",
+        "dataScope": "organization"
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "comments_threads_summary"
+      },
+      "schemas": {
+        "request": null,
+        "response": "CommentsThreadSummaryResponse",
+        "problem": "ProblemDetail"
+      },
+      "ownership": {
+        "owner": "sdkwork-comments",
+        "apiAuthority": "sdkwork-comments-app-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-router-comments-app-api"
+      },
+      "extensions": {
+        "x-sdkwork-audit-event": "comments.thread.summary",
+        "x-sdkwork-request-context": "AppRequestContext"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/app/v3/api/comments/threads/{threadId}/comments",
+      "operationId": "comments.comments.list",
+      "tags": [
+        "comments"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true,
+        "permission": "comments.comments.read",
+        "tenantScope": "tenant",
+        "dataScope": "organization"
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "comments_comments_list"
+      },
+      "schemas": {
+        "request": null,
+        "response": "CommentsListResponse",
+        "problem": "ProblemDetail"
+      },
+      "ownership": {
+        "owner": "sdkwork-comments",
+        "apiAuthority": "sdkwork-comments-app-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-router-comments-app-api"
+      },
+      "extensions": {
+        "x-sdkwork-audit-event": "comments.comment.list",
+        "x-sdkwork-request-context": "AppRequestContext"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/app/v3/api/comments/threads/{threadId}/comments",
+      "operationId": "comments.comments.create",
+      "tags": [
+        "comments"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true,
+        "permission": "comments.comments.write",
+        "tenantScope": "tenant",
+        "dataScope": "organization"
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "comments_comments_create"
+      },
+      "schemas": {
+        "request": "CommentCreateRequest",
+        "response": "CommentResponse",
+        "problem": "ProblemDetail"
+      },
+      "ownership": {
+        "owner": "sdkwork-comments",
+        "apiAuthority": "sdkwork-comments-app-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-router-comments-app-api"
+      },
+      "extensions": {
+        "x-sdkwork-audit-event": "comments.comment.create",
+        "x-sdkwork-request-context": "AppRequestContext"
+      }
+    },
+    {
+      "method": "PATCH",
+      "path": "/app/v3/api/comments/comments/{commentId}",
+      "operationId": "comments.comments.update",
+      "tags": [
+        "comments"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true,
+        "permission": "comments.comments.write",
+        "tenantScope": "tenant",
+        "dataScope": "organization"
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "comments_comments_update"
+      },
+      "schemas": {
+        "request": "CommentUpdateRequest",
+        "response": "CommentResponse",
+        "problem": "ProblemDetail"
+      },
+      "ownership": {
+        "owner": "sdkwork-comments",
+        "apiAuthority": "sdkwork-comments-app-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-router-comments-app-api"
+      },
+      "extensions": {
+        "x-sdkwork-audit-event": "comments.comment.update",
+        "x-sdkwork-request-context": "AppRequestContext"
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/app/v3/api/comments/comments/{commentId}",
+      "operationId": "comments.comments.delete",
+      "tags": [
+        "comments"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true,
+        "permission": "comments.comments.write",
+        "tenantScope": "tenant",
+        "dataScope": "organization"
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "comments_comments_delete"
+      },
+      "schemas": {
+        "request": null,
+        "response": "CommentDeleteResponse",
+        "problem": "ProblemDetail"
+      },
+      "ownership": {
+        "owner": "sdkwork-comments",
+        "apiAuthority": "sdkwork-comments-app-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-router-comments-app-api"
+      },
+      "extensions": {
+        "x-sdkwork-audit-event": "comments.comment.delete",
+        "x-sdkwork-request-context": "AppRequestContext"
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/app/v3/api/comments/comments/{commentId}/reactions/{reactionType}",
+      "operationId": "comments.reactions.upsert",
+      "tags": [
+        "comments"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true,
+        "permission": "comments.reactions.write",
+        "tenantScope": "tenant",
+        "dataScope": "organization"
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "comments_reactions_upsert"
+      },
+      "schemas": {
+        "request": null,
+        "response": "CommentReactionResponse",
+        "problem": "ProblemDetail"
+      },
+      "ownership": {
+        "owner": "sdkwork-comments",
+        "apiAuthority": "sdkwork-comments-app-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-router-comments-app-api"
+      },
+      "extensions": {
+        "x-sdkwork-audit-event": "comments.reaction.upsert",
+        "x-sdkwork-request-context": "AppRequestContext"
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/app/v3/api/comments/comments/{commentId}/reactions/{reactionType}",
+      "operationId": "comments.reactions.delete",
+      "tags": [
+        "comments"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true,
+        "permission": "comments.reactions.write",
+        "tenantScope": "tenant",
+        "dataScope": "organization"
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "comments_reactions_delete"
+      },
+      "schemas": {
+        "request": null,
+        "response": "CommentReactionDeleteResponse",
+        "problem": "ProblemDetail"
+      },
+      "ownership": {
+        "owner": "sdkwork-comments",
+        "apiAuthority": "sdkwork-comments-app-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-router-comments-app-api"
+      },
+      "extensions": {
+        "x-sdkwork-audit-event": "comments.reaction.delete",
+        "x-sdkwork-request-context": "AppRequestContext"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/app/v3/api/engagement/targets/{targetKind}/{targetId}/summary",
+      "operationId": "engagement.targets.summary",
+      "tags": [
+        "engagement"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true,
+        "permission": "engagement.read",
+        "tenantScope": "tenant",
+        "dataScope": "organization"
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "engagement_targets_summary"
+      },
+      "schemas": {
+        "request": null,
+        "response": "EngagementSummaryResponse",
+        "problem": "ProblemDetail"
+      },
+      "ownership": {
+        "owner": "sdkwork-comments",
+        "apiAuthority": "sdkwork-comments-app-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-router-comments-app-api"
+      },
+      "extensions": {
+        "x-sdkwork-audit-event": "engagement.target.summary",
+        "x-sdkwork-request-context": "AppRequestContext"
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/app/v3/api/engagement/targets/{targetKind}/{targetId}/likes",
+      "operationId": "engagement.likes.upsert",
+      "tags": [
+        "engagement"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true,
+        "permission": "engagement.write",
+        "tenantScope": "tenant",
+        "dataScope": "organization"
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "engagement_likes_upsert"
+      },
+      "schemas": {
+        "request": null,
+        "response": "EngagementReactionResponse",
+        "problem": "ProblemDetail"
+      },
+      "ownership": {
+        "owner": "sdkwork-comments",
+        "apiAuthority": "sdkwork-comments-app-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-router-comments-app-api"
+      },
+      "extensions": {
+        "x-sdkwork-audit-event": "engagement.like.upsert",
+        "x-sdkwork-request-context": "AppRequestContext"
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/app/v3/api/engagement/targets/{targetKind}/{targetId}/likes",
+      "operationId": "engagement.likes.delete",
+      "tags": [
+        "engagement"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true,
+        "permission": "engagement.write",
+        "tenantScope": "tenant",
+        "dataScope": "organization"
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "engagement_likes_delete"
+      },
+      "schemas": {
+        "request": null,
+        "response": "EngagementReactionDeleteResponse",
+        "problem": "ProblemDetail"
+      },
+      "ownership": {
+        "owner": "sdkwork-comments",
+        "apiAuthority": "sdkwork-comments-app-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-router-comments-app-api"
+      },
+      "extensions": {
+        "x-sdkwork-audit-event": "engagement.like.delete",
+        "x-sdkwork-request-context": "AppRequestContext"
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/app/v3/api/engagement/targets/{targetKind}/{targetId}/favorites",
+      "operationId": "engagement.favorites.upsert",
+      "tags": [
+        "engagement"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true,
+        "permission": "engagement.write",
+        "tenantScope": "tenant",
+        "dataScope": "organization"
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "engagement_favorites_upsert"
+      },
+      "schemas": {
+        "request": null,
+        "response": "EngagementFavoriteResponse",
+        "problem": "ProblemDetail"
+      },
+      "ownership": {
+        "owner": "sdkwork-comments",
+        "apiAuthority": "sdkwork-comments-app-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-router-comments-app-api"
+      },
+      "extensions": {
+        "x-sdkwork-audit-event": "engagement.favorite.upsert",
+        "x-sdkwork-request-context": "AppRequestContext"
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/app/v3/api/engagement/targets/{targetKind}/{targetId}/favorites",
+      "operationId": "engagement.favorites.delete",
+      "tags": [
+        "engagement"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true,
+        "permission": "engagement.write",
+        "tenantScope": "tenant",
+        "dataScope": "organization"
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "engagement_favorites_delete"
+      },
+      "schemas": {
+        "request": null,
+        "response": "EngagementFavoriteDeleteResponse",
+        "problem": "ProblemDetail"
+      },
+      "ownership": {
+        "owner": "sdkwork-comments",
+        "apiAuthority": "sdkwork-comments-app-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-router-comments-app-api"
+      },
+      "extensions": {
+        "x-sdkwork-audit-event": "engagement.favorite.delete",
+        "x-sdkwork-request-context": "AppRequestContext"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/app/v3/api/engagement/targets/{targetKind}/{targetId}/visits",
+      "operationId": "engagement.visits.create",
+      "tags": [
+        "engagement"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true,
+        "permission": "engagement.write",
+        "tenantScope": "tenant",
+        "dataScope": "organization"
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "engagement_visits_create"
+      },
+      "schemas": {
+        "request": "EngagementVisitCreateRequest",
+        "response": "EngagementVisitResponse",
+        "problem": "ProblemDetail"
+      },
+      "ownership": {
+        "owner": "sdkwork-comments",
+        "apiAuthority": "sdkwork-comments-app-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-router-comments-app-api"
+      },
+      "extensions": {
+        "x-sdkwork-audit-event": "engagement.visit.create",
+        "x-sdkwork-request-context": "AppRequestContext"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/app/v3/api/engagement/visits",
+      "operationId": "engagement.visits.list",
+      "tags": [
+        "engagement"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true,
+        "permission": "engagement.read",
+        "tenantScope": "tenant",
+        "dataScope": "organization"
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "engagement_visits_list"
+      },
+      "schemas": {
+        "request": null,
+        "response": "EngagementVisitListResponse",
+        "problem": "ProblemDetail"
+      },
+      "ownership": {
+        "owner": "sdkwork-comments",
+        "apiAuthority": "sdkwork-comments-app-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-router-comments-app-api"
+      },
+      "extensions": {
+        "x-sdkwork-audit-event": "engagement.visit.list",
+        "x-sdkwork-request-context": "AppRequestContext"
+      }
+    }
+  ]
+}

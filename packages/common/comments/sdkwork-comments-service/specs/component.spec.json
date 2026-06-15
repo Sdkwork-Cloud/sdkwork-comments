@@ -7,8 +7,7 @@
     "version": "0.1.0",
     "type": "node-package",
     "root": "sdkwork-comments/packages/common/comments/sdkwork-comments-service",
-    "domain": "communication",
-    "declaredDomain": "communication",
+    "domain": "comments",
     "capability": "comments-service",
     "status": "ready",
     "languages": [
@@ -48,17 +47,17 @@
     },
     {
       "file": "CODE_STYLE_SPEC.md",
-      "path": "../../../../../sdkwork-specs/CODE_STYLE_SPEC.md",
+      "path": "../../../../../../sdkwork-specs/CODE_STYLE_SPEC.md",
       "purpose": "Authored source structure and generated code boundaries."
     },
     {
       "file": "NAMING_SPEC.md",
-      "path": "../../../../../sdkwork-specs/NAMING_SPEC.md",
+      "path": "../../../../../../sdkwork-specs/NAMING_SPEC.md",
       "purpose": "Canonical SDKWork naming rules."
     },
     {
       "file": "TYPESCRIPT_CODE_SPEC.md",
-      "path": "../../../../../sdkwork-specs/TYPESCRIPT_CODE_SPEC.md",
+      "path": "../../../../../../sdkwork-specs/TYPESCRIPT_CODE_SPEC.md",
       "purpose": "TypeScript and Node package rules."
     }
   ],

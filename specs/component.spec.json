@@ -5,9 +5,9 @@
     "name": "@sdkwork/comments-workspace",
     "displayName": "Comments Workspace",
     "version": "0.1.0",
-    "type": "rust-crate",
+    "type": "sdk-family",
     "root": "sdkwork-comments",
-    "domain": "communication",
+    "domain": "comments",
     "capability": "comments-workspace",
     "languages": [
       "typescript",

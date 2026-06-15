@@ -1,7 +1,5 @@
 packages:
   - "packages/common/*/*"
-  - "packages/native-rust/*/*"
-  - "packages/native-rust/routes/*/*"
   - "../sdkwork-sdk-commons/sdkwork-sdk-common-typescript"
   - "sdks/*"
   - "sdks/sdkwork-comments-app-sdk/sdkwork-comments-app-sdk-typescript/generated/server-openapi"

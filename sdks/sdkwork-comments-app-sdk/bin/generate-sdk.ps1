@@ -18,8 +18,7 @@ function Resolve-PackageName {
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $FamilyRoot = (Get-Item $ScriptDir).Parent.FullName
 $CommentsRoot = (Get-Item $FamilyRoot).Parent.Parent.FullName
-$WorkspaceRoot = (Get-Item (Join-Path $FamilyRoot "..\..\..")).FullName
-$GeneratorPath = Join-Path $WorkspaceRoot "sdkwork-sdk-generator\bin\sdkgen.js"
+$GeneratorPath = "E:\sdkwork-space\sdkwork-sdk-generator\bin\sdkgen.js"
 $InputPath = Join-Path $FamilyRoot "openapi\sdkwork-comments-app-api.sdkgen.yaml"
 $SdkName = "sdkwork-comments-app-sdk"
 $ApiPrefix = "/app/v3/api"

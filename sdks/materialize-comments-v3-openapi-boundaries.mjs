@@ -181,7 +181,7 @@ function operation({
     "x-sdkwork-idempotent": idempotent,
     "x-sdkwork-deployment": "all",
     "x-sdkwork-request-context": requestContext,
-    "x-sdkwork-source": `packages/native-rust/routes/${apiAuthority.endsWith("app-api") ? "app-api" : "backend-api"}/${sourceRouteCrate}`,
+    "x-sdkwork-source": `crates/${sourceRouteCrate}`,
     "x-sdkwork-source-route-crate": sourceRouteCrate,
     "x-sdkwork-server-request-id": true,
   };
@@ -774,7 +774,7 @@ function buildOpenApi({ title, description, apiAuthority, sdkFamily, routes, req
     "x-sdkwork-materialized-from": [
       {
         owner: OWNER,
-        path: `packages/native-rust/routes/${apiAuthority.endsWith("app-api") ? "app-api" : "backend-api"}/${routes[0].sourceRouteCrate}`,
+        path: `crates/${routes[0].sourceRouteCrate}`,
       },
     ],
     "x-sdkwork-request-context": {
@@ -863,7 +863,7 @@ function buildComponentSpec({ family, apiAuthority, prefix, sdkType }) {
 function buildRouteManifest({ apiAuthority, prefix, sdkFamily, surface, routes }) {
   return {
     kind: "sdkwork.route.manifest",
-    packageName: `sdkwork-routes-comments-${surface}`,
+    packageName: `sdkwork-router-comments-${surface}`,
     surface,
     owner: OWNER,
     domain: DOMAIN,
@@ -1022,7 +1022,7 @@ Run \`bin/generate-sdk.ps1 -Languages typescript\` after materializing OpenAPI i
       "sdks",
       "_route-manifests",
       sdkType === "app" ? "app-api" : "backend-api",
-      `sdkwork-routes-comments-${sdkType === "app" ? "app-api" : "backend-api"}.route-manifest.json`,
+      `sdkwork-router-comments-${sdkType === "app" ? "app-api" : "backend-api"}.route-manifest.json`,
     ),
     routeManifest,
   );
@@ -1034,8 +1034,8 @@ async function main() {
   const reactionType = pathParameter("reactionType", { $ref: "#/components/schemas/CommentReactionType" });
   const targetKind = pathParameter("targetKind", { $ref: "#/components/schemas/EngagementTargetKind" });
   const targetId = pathParameter("targetId");
-  const appRouteCrate = "sdkwork-routes-comments-app-api";
-  const backendRouteCrate = "sdkwork-routes-comments-backend-api";
+  const appRouteCrate = "sdkwork-router-comments-app-api";
+  const backendRouteCrate = "sdkwork-router-comments-backend-api";
 
   const appRoutes = [
     {

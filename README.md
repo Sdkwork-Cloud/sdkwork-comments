@@ -1,4 +1,4 @@
-# sdkwork-comments
+﻿# sdkwork-comments
 
 `sdkwork-comments` owns SDKWork comments plus cross-content engagement contracts, service facades, Rust storage, Rust route manifests, OpenAPI authority contracts, and generated SDK workspaces.
 
@@ -8,9 +8,9 @@ Comments and engagement code lives here so `sdkwork-appbase` can consume the cap
 
 - `@sdkwork/comments-contracts`: shared comments contracts plus cross-content engagement contracts for likes, favorites, visit history, and target summaries.
 - `@sdkwork/comments-service`: service facade using injected generated app/backend SDK clients.
-- `sdkwork_comments_storage_sqlx`: Rust SQL storage contracts and migrations for comments, reactions, cross-content engagement, favorites, visits, and moderation.
-- `sdkwork-routes-comments-app-api`: Rust app-api route manifest for `/app/v3/api/comments/*` and `/app/v3/api/engagement/*`.
-- `sdkwork-routes-comments-backend-api`: Rust backend-api route manifest for `/backend/v3/api/comments/*` and `/backend/v3/api/engagement/*`.
+- `sdkwork-comments-engagement-repository-sqlx`: Rust SQL storage contracts and migrations for comments, reactions, cross-content engagement, favorites, visits, and moderation.
+- `sdkwork-router-comments-app-api`: Rust app-api route manifest for `/app/v3/api/comments/*` and `/app/v3/api/engagement/*`.
+- `sdkwork-router-comments-backend-api`: Rust backend-api route manifest for `/backend/v3/api/comments/*` and `/backend/v3/api/engagement/*`.
 
 ## SDKs
 
@@ -49,7 +49,7 @@ Generate TypeScript SDKs:
 
 ## SDKWork Documentation Contract
 
-Domain: communication
+Domain: comments
 Capability: comments-workspace
 Package type: rust-crate
 Status: standard

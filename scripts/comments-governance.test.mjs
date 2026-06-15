@@ -1,4 +1,4 @@
-import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
+﻿import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -111,19 +111,19 @@ function checkAuthoredComponentSpecs() {
         "packages/common/comments/sdkwork-comments-service/specs/component.spec.json",
     },
     {
-      name: "sdkwork_comments_storage_sqlx",
+      name: "sdkwork-comments-engagement-repository-sqlx",
       relativePath:
-        "packages/native-rust/comments/sdkwork-comments-storage-sqlx-rust/specs/component.spec.json",
+        "crates/sdkwork-comments-engagement-repository-sqlx/specs/component.spec.json",
     },
     {
-      name: "sdkwork-routes-comments-app-api",
+      name: "sdkwork-router-comments-app-api",
       relativePath:
-        "packages/native-rust/routes/app-api/sdkwork-routes-comments-app-api/specs/component.spec.json",
+        "crates/sdkwork-router-comments-app-api/specs/component.spec.json",
     },
     {
-      name: "sdkwork-routes-comments-backend-api",
+      name: "sdkwork-router-comments-backend-api",
       relativePath:
-        "packages/native-rust/routes/backend-api/sdkwork-routes-comments-backend-api/specs/component.spec.json",
+        "crates/sdkwork-router-comments-backend-api/specs/component.spec.json",
     },
   ]) {
     checkComponentSpec(component);
@@ -417,7 +417,7 @@ function checkAppbaseResiduals() {
     /packages[\\/]pc-react[\\/]communication[\\/]sdkwork-comments-pc-react\b/iu,
     /packages[\\/]mobile-react[\\/]communication[\\/]sdkwork-comments-mobile-react\b/iu,
     /packages[\\/]mobile-flutter[\\/]communication[\\/]sdkwork-comments-mobile-flutter\b/iu,
-    /\bsdkwork_comments_storage_sqlx\b/u,
+    /\bsdkwork_comments_engagement_repository_sqlx\b/u,
   ];
 
   for (const relativePath of rootWiringFiles) {
@@ -534,7 +534,7 @@ function checkAppbaseResiduals() {
   const strongResidualPatterns = [
     /@sdkwork\/comments(?:-|\/|\b)/iu,
     /sdkwork-comments/iu,
-    /\bsdkwork_comments_storage_sqlx\b/u,
+    /\bsdkwork_comments_engagement_repository_sqlx\b/u,
     /\bcomments_(?:thread|comment|reaction|favorite|visit|engagement|moderation)\b/iu,
     /\/(?:app|backend)\/v3\/api\/comments\b/iu,
     /\bengagement_(?:reaction|favorite|visit_history|projection)\b/u,
@@ -629,7 +629,7 @@ checkSdkFamily({
   authority: "sdkwork-comments-app-api",
   prefix: "/app/v3/api",
   sdkType: "app",
-  routeManifest: "sdkwork-routes-comments-app-api.route-manifest.json",
+  routeManifest: "sdkwork-router-comments-app-api.route-manifest.json",
   expectedOperations: [
     { method: "GET", path: "/app/v3/api/comments/threads/{threadId}/summary" },
     { method: "GET", path: "/app/v3/api/comments/threads/{threadId}/comments" },
@@ -676,7 +676,7 @@ checkSdkFamily({
   authority: "sdkwork-comments-backend-api",
   prefix: "/backend/v3/api",
   sdkType: "backend",
-  routeManifest: "sdkwork-routes-comments-backend-api.route-manifest.json",
+  routeManifest: "sdkwork-router-comments-backend-api.route-manifest.json",
   expectedOperations: [
     { method: "GET", path: "/backend/v3/api/comments/threads" },
     { method: "GET", path: "/backend/v3/api/comments/threads/{threadId}/summary" },

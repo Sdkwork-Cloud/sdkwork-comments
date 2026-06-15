@@ -1,0 +1,10 @@
+[package]
+name = "sdkwork-comments-engagement-repository-sqlx"
+version = "0.1.0"
+edition = "2021"
+description = "SDKWork comments SQLx storage contracts and migrations."
+license = "MIT"
+
+[lib]
+name = "sdkwork_comments_engagement_repository_sqlx"
+path = "src/lib.rs"

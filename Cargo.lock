@@ -3,13 +3,13 @@
 version = 4
 
 [[package]]
-name = "sdkwork-routes-comments-app-api"
+name = "sdkwork-comments-engagement-repository-sqlx"
 version = "0.1.0"
 
 [[package]]
-name = "sdkwork-routes-comments-backend-api"
+name = "sdkwork-router-comments-app-api"
 version = "0.1.0"
 
 [[package]]
-name = "sdkwork_comments_storage_sqlx"
+name = "sdkwork-router-comments-backend-api"
 version = "0.1.0"
