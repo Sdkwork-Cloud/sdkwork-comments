@@ -10,5 +10,6 @@ name = "sdkwork_comments_engagement_repository_sqlx"
 path = "src/lib.rs"
 
 [dependencies]
-sdkwork-database-config = { path = "../../../sdkwork-database/crates/sdkwork-database-config" }
-sdkwork-database-sqlx = { path = "../../../sdkwork-database/crates/sdkwork-database-sqlx" }
+sdkwork-comments-database-host.workspace = true
+sdkwork-database-config.workspace = true
+sdkwork-database-sqlx.workspace = true

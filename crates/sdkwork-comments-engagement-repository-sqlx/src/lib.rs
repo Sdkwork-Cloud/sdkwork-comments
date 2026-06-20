@@ -1,3 +1,11 @@
+mod bootstrap;
+
+pub use bootstrap::{
+    bootstrap_comments_database, bootstrap_comments_database_from_env,
+    connect_and_bootstrap_comments_database_from_env, connect_comments_database_pool_from_env,
+    CommentsDatabaseHost, CommentsDatabasePool,
+};
+
 pub const COMMENTS_STORAGE_MIGRATION: &str = "0001_comments_storage.sql";
 
 const COMMENTS_INITIAL_MIGRATION_SQL: &str =

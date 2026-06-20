@@ -1,0 +1,40 @@
+schema_version: 1
+kind: sdkwork.database.schema
+module_id: comments
+contract_version: 1.0.0
+owner_team: comments-platform
+compliance_level: L2
+engines:
+  - postgres
+table_prefix: comments_
+tables:
+  - name: comments_thread
+    lifecycle_status: active
+    owner: comments-platform
+  - name: comments_comment
+    lifecycle_status: active
+    owner: comments-platform
+  - name: comments_comment_projection
+    lifecycle_status: active
+    owner: comments-platform
+  - name: comments_reaction
+    lifecycle_status: active
+    owner: comments-platform
+  - name: engagement_reaction
+    lifecycle_status: active
+    owner: comments-platform
+  - name: engagement_favorite
+    lifecycle_status: active
+    owner: comments-platform
+  - name: engagement_visit_history
+    lifecycle_status: active
+    owner: comments-platform
+  - name: engagement_projection
+    lifecycle_status: active
+    owner: comments-platform
+  - name: comments_moderation_case
+    lifecycle_status: active
+    owner: comments-platform
+  - name: comments_moderation_event
+    lifecycle_status: active
+    owner: comments-platform

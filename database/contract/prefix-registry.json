@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "kind": "sdkwork.database.prefix-registry",
+  "prefixes": [
+    {
+      "prefix": "comments_",
+      "owner": "comments-platform",
+      "domain": "comments"
+    },
+    {
+      "prefix": "engagement_",
+      "owner": "comments-platform",
+      "domain": "comments"
+    }
+  ]
+}

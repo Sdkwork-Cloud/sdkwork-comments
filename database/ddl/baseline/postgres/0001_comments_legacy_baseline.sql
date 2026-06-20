@@ -1,0 +1,225 @@
+-- Consolidated legacy baseline for sdkwork-comments database module.
+-- source: crates/sdkwork-comments-engagement-repository-sqlx/migrations/0001_comments_storage.sql
+
+CREATE TABLE IF NOT EXISTS comments_thread (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    owner_kind VARCHAR(128) NOT NULL,
+    owner_id VARCHAR(160) NOT NULL,
+    title VARCHAR(512),
+    locked BOOLEAN NOT NULL DEFAULT FALSE,
+    status VARCHAR(64) NOT NULL DEFAULT 'open',
+    payload_json JSONB NOT NULL DEFAULT '{}'::jsonb,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    closed_at TIMESTAMPTZ,
+    version BIGINT NOT NULL DEFAULT 0,
+    deleted_at TIMESTAMPTZ,
+    deleted_by BIGINT,
+    CONSTRAINT uk_comments_thread_owner UNIQUE (tenant_id, organization_id, owner_kind, owner_id)
+);
+
+CREATE TABLE IF NOT EXISTS comments_comment (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    thread_id BIGINT NOT NULL,
+    parent_comment_id BIGINT,
+    author_id BIGINT NOT NULL DEFAULT 0,
+    body_text TEXT NOT NULL,
+    status VARCHAR(64) NOT NULL DEFAULT 'published',
+    moderation_status VARCHAR(64) NOT NULL DEFAULT 'none',
+    payload_json JSONB NOT NULL DEFAULT '{}'::jsonb,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version BIGINT NOT NULL DEFAULT 0,
+    deleted_at TIMESTAMPTZ,
+    deleted_by BIGINT
+);
+
+CREATE TABLE IF NOT EXISTS comments_comment_projection (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    thread_id BIGINT NOT NULL,
+    comment_id BIGINT NOT NULL,
+    parent_comment_id BIGINT,
+    author_id BIGINT NOT NULL DEFAULT 0,
+    body_preview VARCHAR(512) NOT NULL,
+    status VARCHAR(64) NOT NULL DEFAULT 'published',
+    reaction_count INTEGER NOT NULL DEFAULT 0,
+    reply_count INTEGER NOT NULL DEFAULT 0,
+    rank_weight INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version BIGINT NOT NULL DEFAULT 0,
+    CONSTRAINT uk_comments_comment_projection UNIQUE (tenant_id, organization_id, comment_id)
+);
+
+CREATE TABLE IF NOT EXISTS comments_reaction (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    thread_id BIGINT NOT NULL,
+    comment_id BIGINT NOT NULL,
+    user_id BIGINT NOT NULL DEFAULT 0,
+    reaction_type VARCHAR(64) NOT NULL,
+    payload_json JSONB NOT NULL DEFAULT '{}'::jsonb,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version BIGINT NOT NULL DEFAULT 0,
+    CONSTRAINT uk_comments_reaction_user UNIQUE (tenant_id, organization_id, comment_id, user_id, reaction_type)
+);
+
+CREATE TABLE IF NOT EXISTS engagement_reaction (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    target_kind VARCHAR(128) NOT NULL,
+    target_id VARCHAR(160) NOT NULL,
+    user_id BIGINT NOT NULL DEFAULT 0,
+    reaction_type VARCHAR(64) NOT NULL,
+    payload_json JSONB NOT NULL DEFAULT '{}'::jsonb,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version BIGINT NOT NULL DEFAULT 0,
+    CONSTRAINT uk_engagement_reaction_user UNIQUE (
+        tenant_id,
+        organization_id,
+        target_kind,
+        target_id,
+        user_id,
+        reaction_type
+    )
+);
+
+CREATE TABLE IF NOT EXISTS engagement_favorite (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    target_kind VARCHAR(128) NOT NULL,
+    target_id VARCHAR(160) NOT NULL,
+    user_id BIGINT NOT NULL DEFAULT 0,
+    payload_json JSONB NOT NULL DEFAULT '{}'::jsonb,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version BIGINT NOT NULL DEFAULT 0,
+    CONSTRAINT uk_engagement_favorite_user UNIQUE (
+        tenant_id,
+        organization_id,
+        target_kind,
+        target_id,
+        user_id
+    )
+);
+
+CREATE TABLE IF NOT EXISTS engagement_visit_history (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    target_kind VARCHAR(128) NOT NULL,
+    target_id VARCHAR(160) NOT NULL,
+    user_id BIGINT NOT NULL DEFAULT 0,
+    visit_source VARCHAR(128),
+    payload_json JSONB NOT NULL DEFAULT '{}'::jsonb,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS engagement_projection (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    target_kind VARCHAR(128) NOT NULL,
+    target_id VARCHAR(160) NOT NULL,
+    reaction_count INTEGER NOT NULL DEFAULT 0,
+    favorite_count INTEGER NOT NULL DEFAULT 0,
+    visit_count INTEGER NOT NULL DEFAULT 0,
+    unique_visitor_count INTEGER NOT NULL DEFAULT 0,
+    payload_json JSONB NOT NULL DEFAULT '{}'::jsonb,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version BIGINT NOT NULL DEFAULT 0,
+    CONSTRAINT uk_engagement_projection_target UNIQUE (
+        tenant_id,
+        organization_id,
+        target_kind,
+        target_id
+    )
+);
+
+CREATE TABLE IF NOT EXISTS comments_moderation_case (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    thread_id BIGINT NOT NULL,
+    comment_id BIGINT NOT NULL,
+    opened_by BIGINT NOT NULL DEFAULT 0,
+    status VARCHAR(64) NOT NULL DEFAULT 'open',
+    reason TEXT,
+    payload_json JSONB NOT NULL DEFAULT '{}'::jsonb,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    closed_at TIMESTAMPTZ,
+    version BIGINT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS comments_moderation_event (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    case_id BIGINT NOT NULL,
+    thread_id BIGINT NOT NULL,
+    comment_id BIGINT NOT NULL,
+    actor_id BIGINT NOT NULL DEFAULT 0,
+    moderation_status VARCHAR(64) NOT NULL,
+    reason TEXT,
+    payload_json JSONB NOT NULL DEFAULT '{}'::jsonb,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_comments_thread_owner
+    ON comments_thread (tenant_id, organization_id, owner_kind, owner_id);
+
+CREATE INDEX IF NOT EXISTS idx_comments_comment_thread_created
+    ON comments_comment (tenant_id, organization_id, thread_id, created_at);
+
+CREATE INDEX IF NOT EXISTS idx_comments_comment_parent_created
+    ON comments_comment (tenant_id, organization_id, parent_comment_id, created_at);
+
+CREATE INDEX IF NOT EXISTS idx_comments_comment_projection_thread_rank
+    ON comments_comment_projection (tenant_id, organization_id, thread_id, rank_weight, created_at);
+
+CREATE INDEX IF NOT EXISTS idx_comments_reaction_comment_type
+    ON comments_reaction (tenant_id, organization_id, comment_id, reaction_type);
+
+CREATE INDEX IF NOT EXISTS idx_engagement_reaction_target_type
+    ON engagement_reaction (tenant_id, organization_id, target_kind, target_id, reaction_type);
+
+CREATE INDEX IF NOT EXISTS idx_engagement_favorite_target_created
+    ON engagement_favorite (tenant_id, organization_id, target_kind, target_id, created_at);
+
+CREATE INDEX IF NOT EXISTS idx_engagement_visit_history_target_created
+    ON engagement_visit_history (tenant_id, organization_id, target_kind, target_id, created_at);
+
+CREATE INDEX IF NOT EXISTS idx_engagement_visit_history_user_created
+    ON engagement_visit_history (tenant_id, organization_id, user_id, created_at);
+
+CREATE INDEX IF NOT EXISTS idx_engagement_projection_target
+    ON engagement_projection (tenant_id, organization_id, target_kind, target_id);
+
+CREATE INDEX IF NOT EXISTS idx_comments_moderation_case_status
+    ON comments_moderation_case (tenant_id, organization_id, status, updated_at);
+
+CREATE INDEX IF NOT EXISTS idx_comments_moderation_event_case_created
+    ON comments_moderation_event (tenant_id, organization_id, case_id, created_at);
