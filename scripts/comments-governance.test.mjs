@@ -463,10 +463,10 @@ function checkAppbaseResiduals() {
   }
 
   const appbaseOpenApiFiles = [
-    "sdks/sdkwork-appbase-app-sdk/openapi/sdkwork-appbase-app-api.openapi.yaml",
-    "sdks/sdkwork-appbase-app-sdk/openapi/sdkwork-appbase-app-api.sdkgen.yaml",
-    "sdks/sdkwork-appbase-backend-sdk/openapi/sdkwork-appbase-backend-api.openapi.yaml",
-    "sdks/sdkwork-appbase-backend-sdk/openapi/sdkwork-appbase-backend-api.sdkgen.yaml",
+    "sdks/sdkwork-iam-app-sdk/openapi/sdkwork-iam-app-api.openapi.yaml",
+    "sdks/sdkwork-iam-app-sdk/openapi/sdkwork-iam-app-api.sdkgen.yaml",
+    "sdks/sdkwork-iam-backend-sdk/openapi/sdkwork-iam-backend-api.openapi.yaml",
+    "sdks/sdkwork-iam-backend-sdk/openapi/sdkwork-iam-backend-api.sdkgen.yaml",
   ];
 
   for (const relativePath of appbaseOpenApiFiles) {
