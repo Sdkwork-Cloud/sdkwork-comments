@@ -152,8 +152,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "BackendRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-backend-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-backend-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-backend-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-backend-api",
         "x-sdkwork-server-request-id": true
       }
     },
@@ -263,8 +263,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "BackendRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-backend-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-backend-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-backend-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-backend-api",
         "x-sdkwork-server-request-id": true
       }
     },
@@ -403,8 +403,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "BackendRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-backend-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-backend-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-backend-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-backend-api",
         "x-sdkwork-server-request-id": true
       }
     },
@@ -514,8 +514,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "BackendRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-backend-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-backend-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-backend-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-backend-api",
         "x-sdkwork-server-request-id": true
       }
     },
@@ -646,8 +646,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "BackendRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-backend-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-backend-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-backend-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-backend-api",
         "x-sdkwork-server-request-id": true
       }
     },
@@ -757,8 +757,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "BackendRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-backend-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-backend-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-backend-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-backend-api",
         "x-sdkwork-server-request-id": true,
         "requestBody": {
           "required": true,
@@ -886,8 +886,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "BackendRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-backend-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-backend-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-backend-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-backend-api",
         "x-sdkwork-server-request-id": true
       }
     },
@@ -1034,8 +1034,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "BackendRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-backend-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-backend-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-backend-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-backend-api",
         "x-sdkwork-server-request-id": true
       }
     }
@@ -2023,7 +2023,7 @@
   "x-sdkwork-materialized-from": [
     {
       "owner": "sdkwork-comments",
-      "path": "crates/sdkwork-router-comments-backend-api"
+      "path": "crates/sdkwork-routes-comments-backend-api"
     }
   ],
   "x-sdkwork-request-context": {

@@ -1,10 +1,10 @@
 [package]
-name = "sdkwork-router-comments-backend-api"
+name = "sdkwork-routes-comments-backend-api"
 version = "0.1.0"
 edition = "2021"
 description = "SDKWork comments backend-api route manifest."
 license = "MIT"
 
 [lib]
-name = "sdkwork_router_comments_backend_api"
+name = "sdkwork_routes_comments_backend_api"
 path = "src/lib.rs"

@@ -116,14 +116,14 @@ function checkAuthoredComponentSpecs() {
         "crates/sdkwork-comments-engagement-repository-sqlx/specs/component.spec.json",
     },
     {
-      name: "sdkwork-router-comments-app-api",
+      name: "sdkwork-routes-comments-app-api",
       relativePath:
-        "crates/sdkwork-router-comments-app-api/specs/component.spec.json",
+        "crates/sdkwork-routes-comments-app-api/specs/component.spec.json",
     },
     {
-      name: "sdkwork-router-comments-backend-api",
+      name: "sdkwork-routes-comments-backend-api",
       relativePath:
-        "crates/sdkwork-router-comments-backend-api/specs/component.spec.json",
+        "crates/sdkwork-routes-comments-backend-api/specs/component.spec.json",
     },
   ]) {
     checkComponentSpec(component);
@@ -629,7 +629,7 @@ checkSdkFamily({
   authority: "sdkwork-comments-app-api",
   prefix: "/app/v3/api",
   sdkType: "app",
-  routeManifest: "sdkwork-router-comments-app-api.route-manifest.json",
+  routeManifest: "sdkwork-routes-comments-app-api.route-manifest.json",
   expectedOperations: [
     { method: "GET", path: "/app/v3/api/comments/threads/{threadId}/summary" },
     { method: "GET", path: "/app/v3/api/comments/threads/{threadId}/comments" },
@@ -676,7 +676,7 @@ checkSdkFamily({
   authority: "sdkwork-comments-backend-api",
   prefix: "/backend/v3/api",
   sdkType: "backend",
-  routeManifest: "sdkwork-router-comments-backend-api.route-manifest.json",
+  routeManifest: "sdkwork-routes-comments-backend-api.route-manifest.json",
   expectedOperations: [
     { method: "GET", path: "/backend/v3/api/comments/threads" },
     { method: "GET", path: "/backend/v3/api/comments/threads/{threadId}/summary" },

@@ -1065,11 +1065,11 @@ dependencies = [
 ]
 
 [[package]]
-name = "sdkwork-router-comments-app-api"
+name = "sdkwork-routes-comments-app-api"
 version = "0.1.0"
 
 [[package]]
-name = "sdkwork-router-comments-backend-api"
+name = "sdkwork-routes-comments-backend-api"
 version = "0.1.0"
 
 [[package]]

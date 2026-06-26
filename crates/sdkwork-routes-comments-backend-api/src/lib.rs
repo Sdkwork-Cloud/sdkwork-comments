@@ -58,14 +58,14 @@ fn route(
         response_schema,
         ownership_owner: "sdkwork-comments",
         ownership_api_authority: COMMENTS_BACKEND_API_AUTHORITY,
-        source_route_crate: "sdkwork-router-comments-backend-api",
+        source_route_crate: "sdkwork-routes-comments-backend-api",
     }
 }
 
 pub fn comments_backend_api_manifest() -> CommentsRouteManifest {
     CommentsRouteManifest {
         kind: "sdkwork.route.manifest",
-        package_name: "sdkwork-router-comments-backend-api",
+        package_name: "sdkwork-routes-comments-backend-api",
         surface: "backend-api",
         owner: "sdkwork-comments",
         domain: "comments",
@@ -132,4 +132,12 @@ pub fn comments_backend_api_manifest() -> CommentsRouteManifest {
             ),
         ],
     }
+}
+
+pub fn gateway_route_manifest() -> CommentsRouteManifest {
+    comments_backend_api_manifest()
+}
+
+pub fn gateway_mount() -> axum::Router {
+    axum::Router::new()
 }

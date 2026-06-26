@@ -1,6 +1,6 @@
 {
   "kind": "sdkwork.route.manifest",
-  "packageName": "sdkwork-router-comments-backend-api",
+  "packageName": "sdkwork-routes-comments-backend-api",
   "surface": "backend-api",
   "owner": "sdkwork-comments",
   "domain": "comments",
@@ -38,7 +38,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-backend-api"
+        "routeCrate": "sdkwork-routes-comments-backend-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "comments.thread.list",
@@ -74,7 +74,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-backend-api"
+        "routeCrate": "sdkwork-routes-comments-backend-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "comments.thread.summary",
@@ -110,7 +110,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-backend-api"
+        "routeCrate": "sdkwork-routes-comments-backend-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "comments.comment.list",
@@ -146,7 +146,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-backend-api"
+        "routeCrate": "sdkwork-routes-comments-backend-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "comments.comment.delete",
@@ -182,7 +182,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-backend-api"
+        "routeCrate": "sdkwork-routes-comments-backend-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "comments.moderation.case.list",
@@ -218,7 +218,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-backend-api"
+        "routeCrate": "sdkwork-routes-comments-backend-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "comments.moderation.update",
@@ -254,7 +254,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-backend-api"
+        "routeCrate": "sdkwork-routes-comments-backend-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "engagement.target.summary",
@@ -290,7 +290,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-backend-api"
+        "routeCrate": "sdkwork-routes-comments-backend-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "engagement.visit.list",

@@ -1,4 +1,4 @@
-# sdkwork-router-comments-backend-api
+# sdkwork-routes-comments-backend-api
 
 Domain: comments
 Capability: comments
@@ -6,7 +6,7 @@ Package type: rust-route-crate
 Surface: backend-api
 Status: ready
 
-This README is the SDKWork module entrypoint for `sdkwork-router-comments-backend-api`. The machine-readable component contract is `specs/component.spec.json`; canonical standards are under `../../../../sdkwork-specs/`.
+This README is the SDKWork module entrypoint for `sdkwork-routes-comments-backend-api`. The machine-readable component contract is `specs/component.spec.json`; canonical standards are under `../../../../sdkwork-specs/`.
 
 ## Public API
 
@@ -34,7 +34,7 @@ Extension points are limited to public exports, runtime entrypoints, SDK clients
 
 ## Verification
 
-- `cargo test -p sdkwork-router-comments-backend-api`
+- `cargo test -p sdkwork-routes-comments-backend-api`
 
 ## Owner And Status
 

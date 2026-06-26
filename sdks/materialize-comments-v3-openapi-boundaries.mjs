@@ -863,7 +863,7 @@ function buildComponentSpec({ family, apiAuthority, prefix, sdkType }) {
 function buildRouteManifest({ apiAuthority, prefix, sdkFamily, surface, routes }) {
   return {
     kind: "sdkwork.route.manifest",
-    packageName: `sdkwork-router-comments-${surface}`,
+    packageName: `sdkwork-routes-comments-${surface}`,
     surface,
     owner: OWNER,
     domain: DOMAIN,
@@ -1022,7 +1022,7 @@ Run \`bin/generate-sdk.ps1 -Languages typescript\` after materializing OpenAPI i
       "sdks",
       "_route-manifests",
       sdkType === "app" ? "app-api" : "backend-api",
-      `sdkwork-router-comments-${sdkType === "app" ? "app-api" : "backend-api"}.route-manifest.json`,
+      `sdkwork-routes-comments-${sdkType === "app" ? "app-api" : "backend-api"}.route-manifest.json`,
     ),
     routeManifest,
   );
@@ -1034,8 +1034,8 @@ async function main() {
   const reactionType = pathParameter("reactionType", { $ref: "#/components/schemas/CommentReactionType" });
   const targetKind = pathParameter("targetKind", { $ref: "#/components/schemas/EngagementTargetKind" });
   const targetId = pathParameter("targetId");
-  const appRouteCrate = "sdkwork-router-comments-app-api";
-  const backendRouteCrate = "sdkwork-router-comments-backend-api";
+  const appRouteCrate = "sdkwork-routes-comments-app-api";
+  const backendRouteCrate = "sdkwork-routes-comments-backend-api";
 
   const appRoutes = [
     {

@@ -1,10 +1,11 @@
 [workspace]
 resolver = "2"
 members = [
+    "crates/sdkwork-comments-gateway-assembly",
     "crates/sdkwork-comments-database-host",
     "crates/sdkwork-comments-engagement-repository-sqlx",
-    "crates/sdkwork-router-comments-app-api",
-    "crates/sdkwork-router-comments-backend-api",
+    "crates/sdkwork-routes-comments-app-api",
+    "crates/sdkwork-routes-comments-backend-api",
 ]
 
 [workspace.package]

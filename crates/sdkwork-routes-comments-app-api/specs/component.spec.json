@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "kind": "sdkwork.component.spec",
   "component": {
-    "name": "sdkwork-router-comments-app-api",
+    "name": "sdkwork-routes-comments-app-api",
     "displayName": "SDKWork Comments App API Routes",
     "version": "0.1.0",
     "type": "rust-route-crate",
-    "root": "sdkwork-comments/crates/sdkwork-router-comments-app-api",
+    "root": "sdkwork-comments/crates/sdkwork-routes-comments-app-api",
     "domain": "comments",
     "capability": "comments",
     "surface": "app-api",
@@ -82,7 +82,7 @@
       "comments_app_api_manifest"
     ],
     "runtimeEntrypoints": [],
-    "routeManifest": "sdks/_route-manifests/app-api/sdkwork-router-comments-app-api.route-manifest.json",
+    "routeManifest": "sdks/_route-manifests/app-api/sdkwork-routes-comments-app-api.route-manifest.json",
     "sdkClients": [],
     "events": [],
     "configKeys": []
@@ -94,7 +94,7 @@
   },
   "verification": {
     "commands": [
-      "cargo test -p sdkwork-router-comments-app-api"
+      "cargo test -p sdkwork-routes-comments-app-api"
     ]
   },
   "metadata": {

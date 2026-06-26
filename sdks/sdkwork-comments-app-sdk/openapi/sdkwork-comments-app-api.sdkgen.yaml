@@ -139,8 +139,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "AppRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-app-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
         "x-sdkwork-server-request-id": true
       }
     },
@@ -279,8 +279,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "AppRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-app-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
         "x-sdkwork-server-request-id": true
       },
       "post": {
@@ -388,8 +388,8 @@
         "x-sdkwork-idempotent": false,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "AppRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-app-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
         "x-sdkwork-server-request-id": true,
         "requestBody": {
           "required": true,
@@ -509,8 +509,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "AppRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-app-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
         "x-sdkwork-server-request-id": true,
         "requestBody": {
           "required": true,
@@ -628,8 +628,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "AppRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-app-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
         "x-sdkwork-server-request-id": true
       }
     },
@@ -747,8 +747,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "AppRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-app-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
         "x-sdkwork-server-request-id": true
       },
       "delete": {
@@ -864,8 +864,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "AppRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-app-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
         "x-sdkwork-server-request-id": true
       }
     },
@@ -983,8 +983,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "AppRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-app-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
         "x-sdkwork-server-request-id": true
       }
     },
@@ -1102,8 +1102,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "AppRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-app-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
         "x-sdkwork-server-request-id": true
       },
       "delete": {
@@ -1219,8 +1219,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "AppRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-app-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
         "x-sdkwork-server-request-id": true
       }
     },
@@ -1338,8 +1338,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "AppRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-app-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
         "x-sdkwork-server-request-id": true
       },
       "delete": {
@@ -1455,8 +1455,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "AppRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-app-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
         "x-sdkwork-server-request-id": true
       }
     },
@@ -1574,8 +1574,8 @@
         "x-sdkwork-idempotent": false,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "AppRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-app-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
         "x-sdkwork-server-request-id": true,
         "requestBody": {
           "required": true,
@@ -1724,8 +1724,8 @@
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
         "x-sdkwork-request-context": "AppRequestContext",
-        "x-sdkwork-source": "crates/sdkwork-router-comments-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-router-comments-app-api",
+        "x-sdkwork-source": "crates/sdkwork-routes-comments-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-routes-comments-app-api",
         "x-sdkwork-server-request-id": true
       }
     }
@@ -2713,7 +2713,7 @@
   "x-sdkwork-materialized-from": [
     {
       "owner": "sdkwork-comments",
-      "path": "crates/sdkwork-router-comments-app-api"
+      "path": "crates/sdkwork-routes-comments-app-api"
     }
   ],
   "x-sdkwork-request-context": {

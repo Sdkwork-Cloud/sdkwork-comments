@@ -1,4 +1,4 @@
-use sdkwork_router_comments_backend_api::{
+use sdkwork_routes_comments_backend_api::{
     comments_backend_api_manifest, COMMENTS_BACKEND_API_AUTHORITY, COMMENTS_BACKEND_API_AUTH_MODE,
     COMMENTS_BACKEND_API_PREFIX, COMMENTS_BACKEND_SDK_FAMILY,
 };
@@ -8,7 +8,7 @@ fn declares_standard_comments_backend_api_route_manifest() {
     let manifest = comments_backend_api_manifest();
 
     assert_eq!(manifest.kind, "sdkwork.route.manifest");
-    assert_eq!(manifest.package_name, "sdkwork-router-comments-backend-api");
+    assert_eq!(manifest.package_name, "sdkwork-routes-comments-backend-api");
     assert_eq!(manifest.surface, "backend-api");
     assert_eq!(manifest.owner, "sdkwork-comments");
     assert_eq!(manifest.domain, "comments");
@@ -33,7 +33,7 @@ fn comments_backend_api_routes_use_backend_prefix_and_dual_token_auth() {
         );
         assert_eq!(
             route.source_route_crate,
-            "sdkwork-router-comments-backend-api"
+            "sdkwork-routes-comments-backend-api"
         );
     }
 

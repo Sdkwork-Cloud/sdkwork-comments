@@ -1,4 +1,4 @@
-use sdkwork_router_comments_app_api::{
+use sdkwork_routes_comments_app_api::{
     comments_app_api_manifest, COMMENTS_APP_API_AUTHORITY, COMMENTS_APP_API_AUTH_MODE,
     COMMENTS_APP_API_PREFIX, COMMENTS_APP_SDK_FAMILY,
 };
@@ -8,7 +8,7 @@ fn declares_standard_comments_app_api_route_manifest() {
     let manifest = comments_app_api_manifest();
 
     assert_eq!(manifest.kind, "sdkwork.route.manifest");
-    assert_eq!(manifest.package_name, "sdkwork-router-comments-app-api");
+    assert_eq!(manifest.package_name, "sdkwork-routes-comments-app-api");
     assert_eq!(manifest.surface, "app-api");
     assert_eq!(manifest.owner, "sdkwork-comments");
     assert_eq!(manifest.domain, "comments");
@@ -28,7 +28,7 @@ fn comments_app_api_routes_use_app_prefix_and_dual_token_auth() {
         assert_eq!(route.auth_mode, COMMENTS_APP_API_AUTH_MODE);
         assert_eq!(route.ownership_owner, "sdkwork-comments");
         assert_eq!(route.ownership_api_authority, COMMENTS_APP_API_AUTHORITY);
-        assert_eq!(route.source_route_crate, "sdkwork-router-comments-app-api");
+        assert_eq!(route.source_route_crate, "sdkwork-routes-comments-app-api");
     }
 
     for operation_id in [

@@ -9,8 +9,8 @@ Comments and engagement code lives here so `sdkwork-appbase` can consume the cap
 - `@sdkwork/comments-contracts`: shared comments contracts plus cross-content engagement contracts for likes, favorites, visit history, and target summaries.
 - `@sdkwork/comments-service`: service facade using injected generated app/backend SDK clients.
 - `sdkwork-comments-engagement-repository-sqlx`: Rust SQL storage contracts and migrations for comments, reactions, cross-content engagement, favorites, visits, and moderation.
-- `sdkwork-router-comments-app-api`: Rust app-api route manifest for `/app/v3/api/comments/*` and `/app/v3/api/engagement/*`.
-- `sdkwork-router-comments-backend-api`: Rust backend-api route manifest for `/backend/v3/api/comments/*` and `/backend/v3/api/engagement/*`.
+- `sdkwork-routes-comments-app-api`: Rust app-api route manifest for `/app/v3/api/comments/*` and `/app/v3/api/engagement/*`.
+- `sdkwork-routes-comments-backend-api`: Rust backend-api route manifest for `/backend/v3/api/comments/*` and `/backend/v3/api/engagement/*`.
 
 ## SDKs
 
@@ -92,3 +92,6 @@ Owner and lifecycle status are tracked in `specs/component.spec.json`.
 - [docs/product/prd/PRD.md](docs/product/prd/PRD.md)
 - [docs/architecture/tech/TECH_ARCHITECTURE.md](docs/architecture/tech/TECH_ARCHITECTURE.md)
 
+## Application Roots
+
+- [apps directory index](apps/README.md)

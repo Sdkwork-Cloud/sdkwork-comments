@@ -1,6 +1,6 @@
 {
   "kind": "sdkwork.route.manifest",
-  "packageName": "sdkwork-router-comments-app-api",
+  "packageName": "sdkwork-routes-comments-app-api",
   "surface": "app-api",
   "owner": "sdkwork-comments",
   "domain": "comments",
@@ -38,7 +38,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-app-api"
+        "routeCrate": "sdkwork-routes-comments-app-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "comments.thread.summary",
@@ -74,7 +74,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-app-api"
+        "routeCrate": "sdkwork-routes-comments-app-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "comments.comment.list",
@@ -110,7 +110,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-app-api"
+        "routeCrate": "sdkwork-routes-comments-app-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "comments.comment.create",
@@ -146,7 +146,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-app-api"
+        "routeCrate": "sdkwork-routes-comments-app-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "comments.comment.update",
@@ -182,7 +182,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-app-api"
+        "routeCrate": "sdkwork-routes-comments-app-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "comments.comment.delete",
@@ -218,7 +218,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-app-api"
+        "routeCrate": "sdkwork-routes-comments-app-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "comments.reaction.upsert",
@@ -254,7 +254,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-app-api"
+        "routeCrate": "sdkwork-routes-comments-app-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "comments.reaction.delete",
@@ -290,7 +290,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-app-api"
+        "routeCrate": "sdkwork-routes-comments-app-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "engagement.target.summary",
@@ -326,7 +326,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-app-api"
+        "routeCrate": "sdkwork-routes-comments-app-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "engagement.like.upsert",
@@ -362,7 +362,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-app-api"
+        "routeCrate": "sdkwork-routes-comments-app-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "engagement.like.delete",
@@ -398,7 +398,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-app-api"
+        "routeCrate": "sdkwork-routes-comments-app-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "engagement.favorite.upsert",
@@ -434,7 +434,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-app-api"
+        "routeCrate": "sdkwork-routes-comments-app-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "engagement.favorite.delete",
@@ -470,7 +470,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-app-api"
+        "routeCrate": "sdkwork-routes-comments-app-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "engagement.visit.create",
@@ -506,7 +506,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-comments-app-api"
+        "routeCrate": "sdkwork-routes-comments-app-api"
       },
       "extensions": {
         "x-sdkwork-audit-event": "engagement.visit.list",
