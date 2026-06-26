@@ -17,7 +17,7 @@ const thread: SdkworkCommentsThread = {
   id: "thread-product-launch",
   ownerId: "post-launch",
   ownerKind: "social-post",
-  tenantId: "tenant-1",
+  tenantId: "100001",
   title: "Launch discussion",
 };
 
@@ -182,7 +182,7 @@ describe("@sdkwork/comments-contracts", () => {
         like: 2,
       },
       replyCount: 1,
-      tenantId: "tenant-1",
+      tenantId: "100001",
       threadId: "thread-product-launch",
       title: "Launch discussion",
       totalCount: 3,
