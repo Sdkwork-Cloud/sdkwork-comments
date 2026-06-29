@@ -1,6 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import { bootstrapOpenApiEnvelope } from "../../sdkwork-specs/tools/lib/migrate-openapi-legacy-envelope.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const GENERATOR_PATH = path.resolve(ROOT, "../sdkwork-sdk-generator/bin/sdkgen.js");
@@ -971,14 +972,14 @@ foreach ($LanguageValue in $Languages) {
 
 async function materializeFamily({ family, title, description, apiAuthority, prefix, sdkType, packageName, routes }) {
   const requestContext = sdkType === "app" ? "AppRequestContext" : "BackendRequestContext";
-  const openApi = buildOpenApi({
+  const openApi = bootstrapOpenApiEnvelope(buildOpenApi({
     title,
     description,
     apiAuthority,
     sdkFamily: family,
     routes,
     requestContext,
-  });
+  }));
   const sdkgen = {
     ...openApi,
     "x-sdkwork-derived-from": `openapi/${apiAuthority}.openapi.yaml`,

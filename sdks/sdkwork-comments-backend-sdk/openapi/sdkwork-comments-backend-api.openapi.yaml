@@ -69,7 +69,38 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CommentsThreadListResponse"
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SdkWorkApiResponse"
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "data"
+                      ],
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": [
+                            "items",
+                            "pageInfo"
+                          ],
+                          "properties": {
+                            "items": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/CommentsThread"
+                              }
+                            },
+                            "pageInfo": {
+                              "$ref": "#/components/schemas/PageInfo"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -180,7 +211,30 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CommentsThreadSummaryResponse"
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SdkWorkApiResponse"
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "data"
+                      ],
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "required": [
+                            "item"
+                          ],
+                          "properties": {
+                            "item": {
+                              "$ref": "#/components/schemas/CommentsThreadSummaryResponse"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -320,7 +374,38 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CommentsListResponse"
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SdkWorkApiResponse"
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "data"
+                      ],
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": [
+                            "items",
+                            "pageInfo"
+                          ],
+                          "properties": {
+                            "items": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Comment"
+                              }
+                            },
+                            "pageInfo": {
+                              "$ref": "#/components/schemas/PageInfo"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -431,7 +516,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CommentDeleteResponse"
+                  "$ref": "#/components/schemas/SdkWorkCommandResponse"
                 }
               }
             }
@@ -563,7 +648,38 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CommentModerationCaseListResponse"
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SdkWorkApiResponse"
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "data"
+                      ],
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": [
+                            "items",
+                            "pageInfo"
+                          ],
+                          "properties": {
+                            "items": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/CommentModerationCase"
+                              }
+                            },
+                            "pageInfo": {
+                              "$ref": "#/components/schemas/PageInfo"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -674,7 +790,30 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CommentModerationResponse"
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SdkWorkApiResponse"
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "data"
+                      ],
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "required": [
+                            "item"
+                          ],
+                          "properties": {
+                            "item": {
+                              "$ref": "#/components/schemas/CommentModerationResponse"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -803,7 +942,30 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EngagementSummaryResponse"
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SdkWorkApiResponse"
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "data"
+                      ],
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "required": [
+                            "item"
+                          ],
+                          "properties": {
+                            "item": {
+                              "$ref": "#/components/schemas/EngagementSummaryResponse"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -951,7 +1113,38 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EngagementVisitListResponse"
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SdkWorkApiResponse"
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "data"
+                      ],
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": [
+                            "items",
+                            "pageInfo"
+                          ],
+                          "properties": {
+                            "items": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/EngagementVisit"
+                              }
+                            },
+                            "pageInfo": {
+                              "$ref": "#/components/schemas/PageInfo"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -1062,7 +1255,9 @@
         "required": [
           "type",
           "title",
-          "status"
+          "status",
+          "code",
+          "traceId"
         ],
         "properties": {
           "type": {
@@ -1084,12 +1279,9 @@
             "type": "string"
           },
           "code": {
-            "type": "string"
+            "$ref": "#/components/schemas/SdkWorkPlatformErrorCode"
           },
           "traceId": {
-            "type": "string"
-          },
-          "requestId": {
             "type": "string",
             "format": "uuid",
             "description": "Server-owned request correlation id."
@@ -1117,7 +1309,10 @@
             "type": "string"
           },
           "code": {
-            "type": "string"
+            "type": "integer",
+            "format": "int32",
+            "minimum": 40011,
+            "maximum": 40099
           }
         }
       },
@@ -1580,17 +1775,11 @@
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "comment",
-          "requestId"
+          "comment"
         ],
         "properties": {
           "comment": {
             "$ref": "#/components/schemas/Comment"
-          },
-          "requestId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Server-owned request correlation id."
           }
         }
       },
@@ -1599,8 +1788,7 @@
         "additionalProperties": false,
         "required": [
           "commentId",
-          "deleted",
-          "requestId"
+          "deleted"
         ],
         "properties": {
           "commentId": {
@@ -1608,11 +1796,6 @@
           },
           "deleted": {
             "type": "boolean"
-          },
-          "requestId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Server-owned request correlation id."
           }
         }
       },
@@ -1620,17 +1803,11 @@
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "reaction",
-          "requestId"
+          "reaction"
         ],
         "properties": {
           "reaction": {
             "$ref": "#/components/schemas/CommentReaction"
-          },
-          "requestId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Server-owned request correlation id."
           }
         }
       },
@@ -1640,8 +1817,7 @@
         "required": [
           "commentId",
           "reactionType",
-          "deleted",
-          "requestId"
+          "deleted"
         ],
         "properties": {
           "commentId": {
@@ -1652,11 +1828,6 @@
           },
           "deleted": {
             "type": "boolean"
-          },
-          "requestId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Server-owned request correlation id."
           }
         }
       },
@@ -1664,17 +1835,11 @@
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "reaction",
-          "requestId"
+          "reaction"
         ],
         "properties": {
           "reaction": {
             "$ref": "#/components/schemas/EngagementReaction"
-          },
-          "requestId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Server-owned request correlation id."
           }
         }
       },
@@ -1685,8 +1850,7 @@
           "targetKind",
           "targetId",
           "reactionType",
-          "deleted",
-          "requestId"
+          "deleted"
         ],
         "properties": {
           "targetKind": {
@@ -1703,11 +1867,6 @@
           },
           "deleted": {
             "type": "boolean"
-          },
-          "requestId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Server-owned request correlation id."
           }
         }
       },
@@ -1715,17 +1874,11 @@
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "favorite",
-          "requestId"
+          "favorite"
         ],
         "properties": {
           "favorite": {
             "$ref": "#/components/schemas/EngagementFavorite"
-          },
-          "requestId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Server-owned request correlation id."
           }
         }
       },
@@ -1735,8 +1888,7 @@
         "required": [
           "targetKind",
           "targetId",
-          "deleted",
-          "requestId"
+          "deleted"
         ],
         "properties": {
           "targetKind": {
@@ -1747,11 +1899,6 @@
           },
           "deleted": {
             "type": "boolean"
-          },
-          "requestId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Server-owned request correlation id."
           }
         }
       },
@@ -1769,17 +1916,11 @@
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "visit",
-          "requestId"
+          "visit"
         ],
         "properties": {
           "visit": {
             "$ref": "#/components/schemas/EngagementVisit"
-          },
-          "requestId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Server-owned request correlation id."
           }
         }
       },
@@ -1787,17 +1928,11 @@
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "summary",
-          "requestId"
+          "summary"
         ],
         "properties": {
           "summary": {
             "$ref": "#/components/schemas/EngagementSummary"
-          },
-          "requestId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Server-owned request correlation id."
           }
         }
       },
@@ -1806,8 +1941,7 @@
         "additionalProperties": false,
         "required": [
           "items",
-          "pageInfo",
-          "requestId"
+          "pageInfo"
         ],
         "properties": {
           "items": {
@@ -1818,11 +1952,6 @@
           },
           "pageInfo": {
             "$ref": "#/components/schemas/CommentsPageInfo"
-          },
-          "requestId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Server-owned request correlation id."
           }
         }
       },
@@ -1831,8 +1960,7 @@
         "additionalProperties": false,
         "required": [
           "items",
-          "pageInfo",
-          "requestId"
+          "pageInfo"
         ],
         "properties": {
           "items": {
@@ -1843,11 +1971,6 @@
           },
           "pageInfo": {
             "$ref": "#/components/schemas/CommentsPageInfo"
-          },
-          "requestId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Server-owned request correlation id."
           }
         }
       },
@@ -1855,17 +1978,11 @@
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "summary",
-          "requestId"
+          "summary"
         ],
         "properties": {
           "summary": {
             "$ref": "#/components/schemas/CommentsThreadSummary"
-          },
-          "requestId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Server-owned request correlation id."
           }
         }
       },
@@ -1874,8 +1991,7 @@
         "additionalProperties": false,
         "required": [
           "items",
-          "pageInfo",
-          "requestId"
+          "pageInfo"
         ],
         "properties": {
           "items": {
@@ -1886,11 +2002,6 @@
           },
           "pageInfo": {
             "$ref": "#/components/schemas/CommentsPageInfo"
-          },
-          "requestId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Server-owned request correlation id."
           }
         }
       },
@@ -1939,8 +2050,7 @@
         "additionalProperties": false,
         "required": [
           "items",
-          "pageInfo",
-          "requestId"
+          "pageInfo"
         ],
         "properties": {
           "items": {
@@ -1951,11 +2061,6 @@
           },
           "pageInfo": {
             "$ref": "#/components/schemas/CommentsPageInfo"
-          },
-          "requestId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Server-owned request correlation id."
           }
         }
       },
@@ -2001,8 +2106,7 @@
         "additionalProperties": false,
         "required": [
           "comment",
-          "moderationEvent",
-          "requestId"
+          "moderationEvent"
         ],
         "properties": {
           "comment": {
@@ -2010,13 +2114,193 @@
           },
           "moderationEvent": {
             "$ref": "#/components/schemas/CommentModerationEvent"
+          }
+        }
+      },
+      "SdkWorkApiResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "code",
+          "data",
+          "traceId"
+        ],
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "enum": [
+              0
+            ],
+            "default": 0,
+            "minimum": 0,
+            "maximum": 0
           },
-          "requestId": {
+          "data": {
+            "description": "Operation-specific payload typed per response schema."
+          },
+          "traceId": {
             "type": "string",
             "format": "uuid",
             "description": "Server-owned request correlation id."
           }
         }
+      },
+      "SdkWorkResourceData": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "item"
+        ],
+        "properties": {
+          "item": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Typed domain resource for the operation."
+          }
+        }
+      },
+      "SdkWorkPageData": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "items",
+          "pageInfo"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "pageInfo": {
+            "$ref": "#/components/schemas/PageInfo"
+          }
+        }
+      },
+      "SdkWorkCommandData": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "accepted"
+        ],
+        "properties": {
+          "accepted": {
+            "type": "boolean",
+            "const": true
+          },
+          "resourceId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "PageInfo": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "mode"
+        ],
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": [
+              "offset",
+              "cursor"
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 200
+          },
+          "totalItems": {
+            "type": "string",
+            "pattern": "^[0-9]+$"
+          },
+          "totalPages": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "nextCursor": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "hasMore": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SdkWorkPlatformErrorCode": {
+        "type": "integer",
+        "format": "int32",
+        "minimum": 40001,
+        "maximum": 79999,
+        "description": "Platform or domain error code per API_SPEC.md §15.3."
+      },
+      "SdkWorkResourceResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SdkWorkApiResponse"
+          },
+          {
+            "type": "object",
+            "required": [
+              "data"
+            ],
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/SdkWorkResourceData"
+              }
+            }
+          }
+        ]
+      },
+      "SdkWorkListResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SdkWorkApiResponse"
+          },
+          {
+            "type": "object",
+            "required": [
+              "data"
+            ],
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/SdkWorkPageData"
+              }
+            }
+          }
+        ]
+      },
+      "SdkWorkCommandResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SdkWorkApiResponse"
+          },
+          {
+            "type": "object",
+            "required": [
+              "data"
+            ],
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/SdkWorkCommandData"
+              }
+            }
+          }
+        ]
       }
     }
   },
