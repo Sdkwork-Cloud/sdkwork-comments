@@ -1,3 +1,5 @@
+repository-kind: application
+
 ﻿# sdkwork-comments
 
 `sdkwork-comments` owns SDKWork comments plus cross-content engagement contracts, service facades, Rust storage, Rust route manifests, OpenAPI authority contracts, and generated SDK workspaces.

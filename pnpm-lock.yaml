@@ -39,9 +39,9 @@ importers:
         specifier: ^8.0.10
         version: 8.0.16(@types/node@25.9.2)
 
-  packages/common/comments/sdkwork-comments-contracts: {}
+  apps/sdkwork-comments-common/packages/sdkwork-comments-contracts: {}
 
-  packages/common/comments/sdkwork-comments-service:
+  apps/sdkwork-comments-common/packages/sdkwork-comments-service:
     dependencies:
       '@sdkwork/comments-contracts':
         specifier: workspace:*

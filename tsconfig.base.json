@@ -10,10 +10,10 @@
     "baseUrl": ".",
     "paths": {
       "@sdkwork/comments-contracts": [
-        "packages/common/comments/sdkwork-comments-contracts/src/index.ts"
+        "apps/sdkwork-comments-common/packages/sdkwork-comments-contracts/src/index.ts"
       ],
       "@sdkwork/comments-service": [
-        "packages/common/comments/sdkwork-comments-service/src/index.ts"
+        "apps/sdkwork-comments-common/packages/sdkwork-comments-service/src/index.ts"
       ],
       "@sdkwork/sdk-common": [
         "../sdkwork-sdk-commons/sdkwork-sdk-common-typescript/src/index.ts"

@@ -1,5 +1,6 @@
 packages:
-  - "packages/common/*/*"
+  - "apps/sdkwork-comments-common"
+  - "apps/sdkwork-comments-common/packages/*"
   - "../sdkwork-sdk-commons/sdkwork-sdk-common-typescript"
   - "sdks/*"
   - "sdks/sdkwork-comments-app-sdk/sdkwork-comments-app-sdk-typescript/generated/server-openapi"
