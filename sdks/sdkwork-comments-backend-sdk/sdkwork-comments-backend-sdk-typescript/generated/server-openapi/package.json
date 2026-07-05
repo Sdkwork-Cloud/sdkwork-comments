@@ -1,7 +1,7 @@
 {
-  "name": "@sdkwork/comments-backend-sdk",
+  "name": "sdkwork-comments-backend-sdk-generated-typescript",
   "version": "1.0.0",
-  "description": "sdkwork-comments-backend-sdk",
+  "description": "Generator-owned TypeScript transport SDK for sdkwork-comments-backend-sdk.",
   "author": "SDKWork Team",
   "license": "MIT",
   "type": "module",
@@ -40,5 +40,7 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
-  }
+  },
+  "private": true,
+  "sdkworkRole": "transport"
 }

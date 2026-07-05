@@ -1,4 +1,15 @@
 {
+  "schemaVersion": 1,
+  "sdkFamily": "sdkwork-comments-app-sdk",
+  "sdkName": "sdkwork-comments-app-sdk",
+  "packageName": "@sdkwork/comments-app-sdk",
+  "transportPackageName": "sdkwork-comments-app-sdk-generated-typescript",
+  "typescript": {
+    "composedRoot": "sdkwork-comments-app-sdk-typescript",
+    "composedEntry": "sdkwork-comments-app-sdk-typescript/src/index.ts",
+    "transportRoot": "sdkwork-comments-app-sdk-typescript/generated/server-openapi",
+    "transportEntry": "sdkwork-comments-app-sdk-typescript/generated/server-openapi/src/index.ts"
+  },
   "workspace": "sdkwork-comments-app-sdk",
   "title": "SDKWork Comments App API",
   "apiVersion": "1.0.0",
@@ -10,7 +21,6 @@
   },
   "sdkOwner": "sdkwork-comments",
   "apiAuthority": "sdkwork-comments-app-api",
-  "sdkDependencies": [],
   "discoverySurface": {
     "sdkTarget": "app",
     "apiPrefix": "/app/v3/api",
@@ -20,6 +30,11 @@
     ],
     "manualTransports": []
   },
+  "sdkDependencies": [],
+  "metadata": {
+    "managedBy": "sdks/materialize-comments-v3-openapi-boundaries.mjs",
+    "standardVersion": "2026-06-06"
+  },
   "languages": [
     {
       "language": "typescript",
@@ -28,14 +43,11 @@
       "releaseState": "not_published",
       "packagePath": "sdkwork-comments-app-sdk-typescript/generated/server-openapi",
       "manifestPath": "sdkwork-comments-app-sdk-typescript/generated/server-openapi/package.json",
-      "name": "@sdkwork/comments-app-sdk",
       "version": "1.0.0",
       "description": "Generator-owned typescript transport SDK for SDKWork Comments App API.",
-      "generatedPath": "sdkwork-comments-app-sdk-typescript/generated/server-openapi"
+      "generatedPath": "sdkwork-comments-app-sdk-typescript/generated/server-openapi",
+      "consumerPackageName": "@sdkwork/comments-app-sdk",
+      "transportPackageName": "sdkwork-comments-app-sdk-generated-typescript"
     }
-  ],
-  "metadata": {
-    "managedBy": "sdks/materialize-comments-v3-openapi-boundaries.mjs",
-    "standardVersion": "2026-06-06"
-  }
+  ]
 }
