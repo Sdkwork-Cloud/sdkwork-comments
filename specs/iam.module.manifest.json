@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "kind": "sdkwork.iam.module",
+  "moduleId": "comments",
+  "domain": "comments",
+  "permissions": {
+    "catalog": [
+      {
+        "code": "comments.comments.moderate",
+        "description": "Permission comments.comments.moderate",
+        "source": "openapi"
+      },
+      {
+        "code": "comments.comments.read",
+        "description": "Permission comments.comments.read",
+        "source": "openapi"
+      },
+      {
+        "code": "comments.comments.write",
+        "description": "Permission comments.comments.write",
+        "source": "openapi"
+      },
+      {
+        "code": "comments.moderation.read",
+        "description": "Permission comments.moderation.read",
+        "source": "openapi"
+      },
+      {
+        "code": "comments.moderation.write",
+        "description": "Permission comments.moderation.write",
+        "source": "openapi"
+      },
+      {
+        "code": "comments.reactions.write",
+        "description": "Permission comments.reactions.write",
+        "source": "openapi"
+      },
+      {
+        "code": "comments.threads.read",
+        "description": "Permission comments.threads.read",
+        "source": "openapi"
+      }
+    ]
+  }
+}
