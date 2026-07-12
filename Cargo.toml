@@ -13,6 +13,7 @@ edition = "2021"
 version = "0.1.0"
 
 [workspace.dependencies]
+axum = "0.8"
 sdkwork-comments-database-host = { path = "crates/sdkwork-comments-database-host" }
 sdkwork-database-config = { path = "../sdkwork-database/crates/sdkwork-database-config", package = "sdkwork-database-config" }
 sdkwork-database-lifecycle = { path = "../sdkwork-database/crates/sdkwork-database-lifecycle", package = "sdkwork-database-lifecycle" }
