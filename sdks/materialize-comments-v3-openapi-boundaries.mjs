@@ -2,6 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import { bootstrapOpenApiEnvelope } from "../../sdkwork-specs/tools/lib/migrate-openapi-legacy-envelope.mjs";
+import { alignOpenApiOperationPatterns } from "../../sdkwork-specs/tools/lib/align-api-operation-patterns.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const GENERATOR_PATH = path.resolve(ROOT, "../sdkwork-sdk-generator/bin/sdkgen.js");
@@ -972,13 +973,17 @@ foreach ($LanguageValue in $Languages) {
 
 async function materializeFamily({ family, title, description, apiAuthority, prefix, sdkType, packageName, routes }) {
   const requestContext = sdkType === "app" ? "AppRequestContext" : "BackendRequestContext";
-  const openApi = bootstrapOpenApiEnvelope(buildOpenApi({
+  const openApi = alignOpenApiOperationPatterns(bootstrapOpenApiEnvelope(buildOpenApi({
     title,
     description,
     apiAuthority,
     sdkFamily: family,
     routes,
     requestContext,
+  }))).document;
+  const alignedRoutes = routes.map((route) => ({
+    ...route,
+    operationId: openApi.paths[route.path][route.method.toLowerCase()].operationId,
   }));
   const sdkgen = {
     ...openApi,
@@ -991,7 +996,7 @@ async function materializeFamily({ family, title, description, apiAuthority, pre
     prefix,
     sdkFamily: family,
     surface: sdkType === "app" ? "app-api" : "backend-api",
-    routes,
+    routes: alignedRoutes,
   });
 
   await writeText(
@@ -1003,7 +1008,7 @@ Generated ${sdkType} SDK family for sdkwork-comments.
 Run \`bin/generate-sdk.ps1 -Languages typescript\` after materializing OpenAPI inputs.
 `,
   );
-  await writeJson(path.join(ROOT, "sdks", family, ".sdkwork-assembly.json"), assembly);
+  await writeJson(path.join(ROOT, "sdks", family, "sdk-manifest.json"), assembly);
   await writeJson(path.join(ROOT, "sdks", family, "specs", "component.spec.json"), component);
   await writeJson(path.join(ROOT, "sdks", family, "openapi", `${apiAuthority}.openapi.yaml`), openApi);
   await writeJson(path.join(ROOT, "sdks", family, "openapi", `${apiAuthority}.sdkgen.yaml`), sdkgen);

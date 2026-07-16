@@ -12,7 +12,7 @@
     {
       "method": "GET",
       "path": "/app/v3/api/comments/threads/{threadId}/summary",
-      "operationId": "comments.threads.summary",
+      "operationId": "comments.threads.retrieve",
       "tags": [
         "comments"
       ],
@@ -25,7 +25,7 @@
       },
       "handler": {
         "module": "crate::handlers",
-        "name": "comments_threads_summary"
+        "name": "comments_threads_retrieve"
       },
       "schemas": {
         "request": null,
@@ -192,7 +192,7 @@
     {
       "method": "PUT",
       "path": "/app/v3/api/comments/comments/{commentId}/reactions/{reactionType}",
-      "operationId": "comments.reactions.upsert",
+      "operationId": "comments.reactions.update",
       "tags": [
         "comments"
       ],
@@ -205,7 +205,7 @@
       },
       "handler": {
         "module": "crate::handlers",
-        "name": "comments_reactions_upsert"
+        "name": "comments_reactions_update"
       },
       "schemas": {
         "request": null,
@@ -264,7 +264,7 @@
     {
       "method": "GET",
       "path": "/app/v3/api/engagement/targets/{targetKind}/{targetId}/summary",
-      "operationId": "engagement.targets.summary",
+      "operationId": "engagement.targets.retrieve",
       "tags": [
         "engagement"
       ],
@@ -277,7 +277,7 @@
       },
       "handler": {
         "module": "crate::handlers",
-        "name": "engagement_targets_summary"
+        "name": "engagement_targets_retrieve"
       },
       "schemas": {
         "request": null,
@@ -300,7 +300,7 @@
     {
       "method": "PUT",
       "path": "/app/v3/api/engagement/targets/{targetKind}/{targetId}/likes",
-      "operationId": "engagement.likes.upsert",
+      "operationId": "engagement.likes.update",
       "tags": [
         "engagement"
       ],
@@ -313,7 +313,7 @@
       },
       "handler": {
         "module": "crate::handlers",
-        "name": "engagement_likes_upsert"
+        "name": "engagement_likes_update"
       },
       "schemas": {
         "request": null,
@@ -372,7 +372,7 @@
     {
       "method": "PUT",
       "path": "/app/v3/api/engagement/targets/{targetKind}/{targetId}/favorites",
-      "operationId": "engagement.favorites.upsert",
+      "operationId": "engagement.favorites.update",
       "tags": [
         "engagement"
       ],
@@ -385,7 +385,7 @@
       },
       "handler": {
         "module": "crate::handlers",
-        "name": "engagement_favorites_upsert"
+        "name": "engagement_favorites_update"
       },
       "schemas": {
         "request": null,

@@ -278,14 +278,14 @@ function checkSdkFamily({
   routeManifest,
 }) {
   assertFile(`sdks/${family}/README.md`);
-  assertFile(`sdks/${family}/.sdkwork-assembly.json`);
+  assertFile(`sdks/${family}/sdk-manifest.json`);
   assertFile(`sdks/${family}/specs/component.spec.json`);
   assertFile(`sdks/${family}/openapi/${authority}.openapi.yaml`);
   assertFile(`sdks/${family}/openapi/${authority}.sdkgen.yaml`);
   assertFile(`sdks/${family}/bin/generate-sdk.ps1`);
   assertFile(`sdks/_route-manifests/${sdkType === "app" ? "app-api" : "backend-api"}/${routeManifest}`);
 
-  const assembly = readJson(`sdks/${family}/.sdkwork-assembly.json`);
+  const assembly = readJson(`sdks/${family}/sdk-manifest.json`);
   const component = readJson(`sdks/${family}/specs/component.spec.json`);
   const openApi = readJson(`sdks/${family}/openapi/${authority}.openapi.yaml`);
   const sdkgen = readJson(`sdks/${family}/openapi/${authority}.sdkgen.yaml`);

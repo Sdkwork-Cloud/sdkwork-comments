@@ -48,7 +48,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/comments/threads/{threadId}/summary",
-      "operationId": "comments.threads.summary",
+      "operationId": "comments.threads.retrieve",
       "tags": [
         "comments"
       ],
@@ -228,7 +228,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/engagement/targets/{targetKind}/{targetId}/summary",
-      "operationId": "engagement.targets.summary",
+      "operationId": "engagement.targets.retrieve",
       "tags": [
         "engagement"
       ],

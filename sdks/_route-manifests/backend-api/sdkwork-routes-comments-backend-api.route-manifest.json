@@ -48,7 +48,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/comments/threads/{threadId}/summary",
-      "operationId": "comments.threads.summary",
+      "operationId": "comments.threads.retrieve",
       "tags": [
         "comments"
       ],
@@ -61,7 +61,7 @@
       },
       "handler": {
         "module": "crate::handlers",
-        "name": "comments_threads_summary"
+        "name": "comments_threads_retrieve"
       },
       "schemas": {
         "request": null,
@@ -228,7 +228,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/engagement/targets/{targetKind}/{targetId}/summary",
-      "operationId": "engagement.targets.summary",
+      "operationId": "engagement.targets.retrieve",
       "tags": [
         "engagement"
       ],
@@ -241,7 +241,7 @@
       },
       "handler": {
         "module": "crate::handlers",
-        "name": "engagement_targets_summary"
+        "name": "engagement_targets_retrieve"
       },
       "schemas": {
         "request": null,

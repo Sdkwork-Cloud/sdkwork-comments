@@ -5,7 +5,7 @@
   "type": "module",
   "packageManager": "pnpm@10.33.0",
   "scripts": {
-    "test": "vitest run packages",
+    "stop": "node ../sdkwork-specs/tools/stop-sdkwork-workspace-processes.mjs --workspace .",    "test": "vitest run packages",
     "test:contracts": "vitest run apps/sdkwork-comments-common/packages/sdkwork-comments-contracts/tests/commentsContracts.test.ts",
     "test:service": "vitest run apps/sdkwork-comments-common/packages/sdkwork-comments-service/tests/commentsService.test.ts",
     "test:governance": "node scripts/comments-governance.test.mjs",
