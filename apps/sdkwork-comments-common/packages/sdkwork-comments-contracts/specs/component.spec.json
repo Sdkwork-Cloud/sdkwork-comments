@@ -6,7 +6,7 @@
     "displayName": "SDKWork Comments Contracts",
     "version": "0.1.0",
     "type": "node-package",
-    "root": "sdkwork-comments/packages/common/comments/sdkwork-comments-contracts",
+    "root": "sdkwork-comments/apps/sdkwork-comments-common/packages/sdkwork-comments-contracts",
     "domain": "comments",
     "capability": "comments-contracts",
     "status": "ready",

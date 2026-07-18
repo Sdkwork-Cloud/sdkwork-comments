@@ -6,7 +6,7 @@
     "displayName": "SDKWork Comments Service",
     "version": "0.1.0",
     "type": "node-package",
-    "root": "sdkwork-comments/packages/common/comments/sdkwork-comments-service",
+    "root": "sdkwork-comments/apps/sdkwork-comments-common/packages/sdkwork-comments-service",
     "domain": "comments",
     "capability": "comments-service",
     "status": "ready",

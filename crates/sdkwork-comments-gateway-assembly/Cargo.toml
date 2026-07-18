@@ -11,5 +11,5 @@ path = "src/lib.rs"
 [dependencies]
 axum.workspace = true
 tokio = { version = "1.48", features = ["macros", "rt-multi-thread"] }
-sdkwork_routes_comments_app_api = { package = "sdkwork-routes-comments-app-api", path = "../sdkwork-routes-comments-app-api" }
-sdkwork_routes_comments_backend_api = { package = "sdkwork-routes-comments-backend-api", path = "../sdkwork-routes-comments-backend-api" }
+sdkwork_routes_comments_app_api.workspace = true
+sdkwork_routes_comments_backend_api.workspace = true

@@ -15,6 +15,8 @@ version = "0.1.0"
 [workspace.dependencies]
 axum = "0.8"
 sdkwork-comments-database-host = { path = "crates/sdkwork-comments-database-host" }
+sdkwork_routes_comments_app_api = { package = "sdkwork-routes-comments-app-api", path = "crates/sdkwork-routes-comments-app-api" }
+sdkwork_routes_comments_backend_api = { package = "sdkwork-routes-comments-backend-api", path = "crates/sdkwork-routes-comments-backend-api" }
 sdkwork-database-config = { path = "../sdkwork-database/crates/sdkwork-database-config", package = "sdkwork-database-config" }
 sdkwork-database-lifecycle = { path = "../sdkwork-database/crates/sdkwork-database-lifecycle", package = "sdkwork-database-lifecycle" }
 sdkwork-database-spi = { path = "../sdkwork-database/crates/sdkwork-database-spi", package = "sdkwork-database-spi" }

@@ -6,9 +6,9 @@ export default defineConfig({
   resolve: {
     alias: {
       "@sdkwork/comments-contracts":
-        new URL("./packages/common/comments/sdkwork-comments-contracts/src/index.ts", import.meta.url).pathname,
+        new URL("./apps/sdkwork-comments-common/packages/sdkwork-comments-contracts/src/index.ts", import.meta.url).pathname,
       "@sdkwork/comments-service":
-        new URL("./packages/common/comments/sdkwork-comments-service/src/index.ts", import.meta.url).pathname,
+        new URL("./apps/sdkwork-comments-common/packages/sdkwork-comments-service/src/index.ts", import.meta.url).pathname,
     },
   },
   test: {

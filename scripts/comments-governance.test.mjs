@@ -103,12 +103,12 @@ function checkAuthoredComponentSpecs() {
     {
       name: "@sdkwork/comments-contracts",
       relativePath:
-        "packages/common/comments/sdkwork-comments-contracts/specs/component.spec.json",
+        "apps/sdkwork-comments-common/packages/sdkwork-comments-contracts/specs/component.spec.json",
     },
     {
       name: "@sdkwork/comments-service",
       relativePath:
-        "packages/common/comments/sdkwork-comments-service/specs/component.spec.json",
+        "apps/sdkwork-comments-common/packages/sdkwork-comments-service/specs/component.spec.json",
     },
     {
       name: "sdkwork-comments-engagement-repository-sqlx",
@@ -361,7 +361,8 @@ function checkCommentsPackages() {
   ]);
   const found = new Set();
 
-  for (const file of walkFiles(path.join(ROOT, "packages")).filter((candidate) => path.basename(candidate) === "package.json")) {
+  const packagesRoot = path.join(ROOT, "apps", "sdkwork-comments-common", "packages");
+  for (const file of walkFiles(packagesRoot).filter((candidate) => path.basename(candidate) === "package.json")) {
     const pkg = JSON.parse(readFileSync(file, "utf8"));
     found.add(pkg.name);
     if (pkg.sdkwork?.workspace !== "sdkwork-comments") {
@@ -650,7 +651,7 @@ checkSdkFamily({
 checkGeneratedSdkOutput({
   family: "sdkwork-comments-app-sdk",
   sdkType: "app",
-  packageName: "@sdkwork/comments-app-sdk",
+  packageName: "sdkwork-comments-app-sdk-generated-typescript",
   expectedSurface: [
     { source: "sdk", label: "client.comments", pattern: /public readonly comments: CommentsApi/u },
     { source: "sdk", label: "client.engagement", pattern: /public readonly engagement: EngagementApi/u },
@@ -691,7 +692,7 @@ checkSdkFamily({
 checkGeneratedSdkOutput({
   family: "sdkwork-comments-backend-sdk",
   sdkType: "backend",
-  packageName: "@sdkwork/comments-backend-sdk",
+  packageName: "sdkwork-comments-backend-sdk-generated-typescript",
   expectedSurface: [
     { source: "sdk", label: "client.comments", pattern: /public readonly comments: CommentsApi/u },
     { source: "sdk", label: "client.engagement", pattern: /public readonly engagement: EngagementApi/u },
