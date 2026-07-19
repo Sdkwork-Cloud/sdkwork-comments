@@ -8,3 +8,6 @@ license = "MIT"
 [lib]
 name = "sdkwork_routes_comments_backend_api"
 path = "src/lib.rs"
+
+[dependencies]
+axum.workspace = true
