@@ -3,13 +3,13 @@
 
 use axum::Router;
 
-pub struct ApplicationAssembly {
+pub struct ApiAssembly {
     pub router: Router,
 }
 
-pub fn assemble_application_router() -> ApplicationAssembly {
+pub fn assemble_api_router() -> ApiAssembly {
     let mut router = Router::new();
     router = router.merge(sdkwork_routes_comments_app_api::gateway_mount());
     router = router.merge(sdkwork_routes_comments_backend_api::gateway_mount());
-    ApplicationAssembly { router }
+    ApiAssembly { router }
 }

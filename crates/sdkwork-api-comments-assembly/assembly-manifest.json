@@ -1,0 +1,32 @@
+{
+  "kind": "sdkwork.api.assembly",
+  "schemaVersion": 1,
+  "applicationCode": "comments",
+  "apiMode": "served",
+  "packageName": "sdkwork-api-comments-assembly",
+  "crateDir": "crates/sdkwork-api-comments-assembly",
+  "routeCrates": [
+    {
+      "packageName": "sdkwork-routes-comments-app-api",
+      "memberDir": "crates/sdkwork-routes-comments-app-api",
+      "libName": "sdkwork_routes_comments_app_api",
+      "surface": "app-api",
+      "pathPrefix": "/app/v3/api",
+      "mountOrder": 0,
+      "componentRef": "crates/sdkwork-routes-comments-app-api/specs/component.spec.json",
+      "routeManifestRef": "crates/sdkwork-routes-comments-app-api/sdks/_route-manifests/app-api/sdkwork-routes-comments-app-api.route-manifest.json",
+      "sourceRef": "crates/sdkwork-routes-comments-app-api/Cargo.toml"
+    },
+    {
+      "packageName": "sdkwork-routes-comments-backend-api",
+      "memberDir": "crates/sdkwork-routes-comments-backend-api",
+      "libName": "sdkwork_routes_comments_backend_api",
+      "surface": "backend-api",
+      "pathPrefix": "/backend/v3/api",
+      "mountOrder": 1,
+      "componentRef": "crates/sdkwork-routes-comments-backend-api/specs/component.spec.json",
+      "routeManifestRef": "crates/sdkwork-routes-comments-backend-api/sdks/_route-manifests/backend-api/sdkwork-routes-comments-backend-api.route-manifest.json",
+      "sourceRef": "crates/sdkwork-routes-comments-backend-api/Cargo.toml"
+    }
+  ]
+}
