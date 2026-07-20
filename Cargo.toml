@@ -1,8 +1,6 @@
 [workspace]
 resolver = "2"
 members = [
-    "crates/sdkwork-api-comments-assembly",
-    "crates/sdkwork-api-comments-assembly",
     "crates/sdkwork-comments-database-host",
     "crates/sdkwork-comments-engagement-repository-sqlx",
 ]

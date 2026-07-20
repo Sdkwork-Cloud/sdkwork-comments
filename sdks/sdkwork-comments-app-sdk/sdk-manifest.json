@@ -10,6 +10,16 @@
   },
   "sdkOwner": "sdkwork-comments",
   "apiAuthority": "sdkwork-comments-app-api",
+  "sdkFamily": "sdkwork-comments-app-sdk",
+  "sdkName": "sdkwork-comments-app-sdk",
+  "packageName": "@sdkwork/comments-app-sdk",
+  "transportPackageName": "sdkwork-comments-app-sdk-generated-typescript",
+  "typescript": {
+    "composedRoot": "sdkwork-comments-app-sdk-typescript",
+    "composedEntry": "sdkwork-comments-app-sdk-typescript/src/index.ts",
+    "transportRoot": "sdkwork-comments-app-sdk-typescript/generated/server-openapi",
+    "transportEntry": "sdkwork-comments-app-sdk-typescript/generated/server-openapi/src/index.ts"
+  },
   "sdkDependencies": [],
   "discoverySurface": {
     "sdkTarget": "app",
