@@ -1,5 +1,6 @@
 schema_version: 1
 kind: sdkwork.database.schema
+database_role: authoritative-server
 module_id: comments
 contract_version: 1.0.0
 owner_team: comments-platform
@@ -20,16 +21,16 @@ tables:
   - name: comments_reaction
     lifecycle_status: active
     owner: comments-platform
-  - name: engagement_reaction
+  - name: comments_engagement_reaction
     lifecycle_status: active
     owner: comments-platform
-  - name: engagement_favorite
+  - name: comments_engagement_favorite
     lifecycle_status: active
     owner: comments-platform
-  - name: engagement_visit_history
+  - name: comments_engagement_visit_history
     lifecycle_status: active
     owner: comments-platform
-  - name: engagement_projection
+  - name: comments_engagement_projection
     lifecycle_status: active
     owner: comments-platform
   - name: comments_moderation_case

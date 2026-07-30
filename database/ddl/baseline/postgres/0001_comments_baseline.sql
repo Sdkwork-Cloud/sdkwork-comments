@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS comments_reaction (
     CONSTRAINT uk_comments_reaction_user UNIQUE (tenant_id, organization_id, comment_id, user_id, reaction_type)
 );
 
-CREATE TABLE IF NOT EXISTS engagement_reaction (
+CREATE TABLE IF NOT EXISTS comments_engagement_reaction (
     id BIGINT PRIMARY KEY,
     uuid VARCHAR(64) NOT NULL UNIQUE,
     tenant_id BIGINT NOT NULL DEFAULT 0,
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS engagement_reaction (
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     version BIGINT NOT NULL DEFAULT 0,
-    CONSTRAINT uk_engagement_reaction_user UNIQUE (
+    CONSTRAINT uk_comments_engagement_reaction_user UNIQUE (
         tenant_id,
         organization_id,
         target_kind,
@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS engagement_reaction (
     )
 );
 
-CREATE TABLE IF NOT EXISTS engagement_favorite (
+CREATE TABLE IF NOT EXISTS comments_engagement_favorite (
     id BIGINT PRIMARY KEY,
     uuid VARCHAR(64) NOT NULL UNIQUE,
     tenant_id BIGINT NOT NULL DEFAULT 0,
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS engagement_favorite (
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     version BIGINT NOT NULL DEFAULT 0,
-    CONSTRAINT uk_engagement_favorite_user UNIQUE (
+    CONSTRAINT uk_comments_engagement_favorite_user UNIQUE (
         tenant_id,
         organization_id,
         target_kind,
@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS engagement_favorite (
     )
 );
 
-CREATE TABLE IF NOT EXISTS engagement_visit_history (
+CREATE TABLE IF NOT EXISTS comments_engagement_visit_history (
     id BIGINT PRIMARY KEY,
     uuid VARCHAR(64) NOT NULL UNIQUE,
     tenant_id BIGINT NOT NULL DEFAULT 0,
@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS engagement_visit_history (
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS engagement_projection (
+CREATE TABLE IF NOT EXISTS comments_engagement_projection (
     id BIGINT PRIMARY KEY,
     uuid VARCHAR(64) NOT NULL UNIQUE,
     tenant_id BIGINT NOT NULL DEFAULT 0,
@@ -153,7 +153,7 @@ CREATE TABLE IF NOT EXISTS engagement_projection (
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     version BIGINT NOT NULL DEFAULT 0,
-    CONSTRAINT uk_engagement_projection_target UNIQUE (
+    CONSTRAINT uk_comments_engagement_projection_target UNIQUE (
         tenant_id,
         organization_id,
         target_kind,
@@ -208,20 +208,20 @@ CREATE INDEX IF NOT EXISTS idx_comments_comment_projection_thread_rank
 CREATE INDEX IF NOT EXISTS idx_comments_reaction_comment_type
     ON comments_reaction (tenant_id, organization_id, comment_id, reaction_type);
 
-CREATE INDEX IF NOT EXISTS idx_engagement_reaction_target_type
-    ON engagement_reaction (tenant_id, organization_id, target_kind, target_id, reaction_type);
+CREATE INDEX IF NOT EXISTS idx_comments_engagement_reaction_target_type
+    ON comments_engagement_reaction (tenant_id, organization_id, target_kind, target_id, reaction_type);
 
-CREATE INDEX IF NOT EXISTS idx_engagement_favorite_target_created
-    ON engagement_favorite (tenant_id, organization_id, target_kind, target_id, created_at);
+CREATE INDEX IF NOT EXISTS idx_comments_engagement_favorite_target_created
+    ON comments_engagement_favorite (tenant_id, organization_id, target_kind, target_id, created_at);
 
-CREATE INDEX IF NOT EXISTS idx_engagement_visit_history_target_created
-    ON engagement_visit_history (tenant_id, organization_id, target_kind, target_id, created_at);
+CREATE INDEX IF NOT EXISTS idx_comments_engagement_visit_history_target_created
+    ON comments_engagement_visit_history (tenant_id, organization_id, target_kind, target_id, created_at);
 
-CREATE INDEX IF NOT EXISTS idx_engagement_visit_history_user_created
-    ON engagement_visit_history (tenant_id, organization_id, user_id, created_at);
+CREATE INDEX IF NOT EXISTS idx_comments_engagement_visit_history_user_created
+    ON comments_engagement_visit_history (tenant_id, organization_id, user_id, created_at);
 
-CREATE INDEX IF NOT EXISTS idx_engagement_projection_target
-    ON engagement_projection (tenant_id, organization_id, target_kind, target_id);
+CREATE INDEX IF NOT EXISTS idx_comments_engagement_projection_target
+    ON comments_engagement_projection (tenant_id, organization_id, target_kind, target_id);
 
 CREATE INDEX IF NOT EXISTS idx_comments_moderation_case_status
     ON comments_moderation_case (tenant_id, organization_id, status, updated_at);

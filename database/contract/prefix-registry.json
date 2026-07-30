@@ -6,11 +6,6 @@
       "prefix": "comments_",
       "owner": "comments-platform",
       "domain": "comments"
-    },
-    {
-      "prefix": "engagement_",
-      "owner": "comments-platform",
-      "domain": "comments"
     }
   ]
 }

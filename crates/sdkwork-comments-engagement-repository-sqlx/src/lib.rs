@@ -46,10 +46,10 @@ pub fn comments_reaction_tables() -> Vec<&'static str> {
 
 pub fn engagement_tables() -> Vec<&'static str> {
     vec![
-        "engagement_reaction",
-        "engagement_favorite",
-        "engagement_visit_history",
-        "engagement_projection",
+        "comments_engagement_reaction",
+        "comments_engagement_favorite",
+        "comments_engagement_visit_history",
+        "comments_engagement_projection",
     ]
 }
 

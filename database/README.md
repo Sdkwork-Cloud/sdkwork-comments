@@ -4,14 +4,14 @@ Canonical lifecycle assets for `sdkwork-comments` per `DATABASE_FRAMEWORK_SPEC.m
 
 - moduleId: `comments`
 - serviceCode: `COMMENTS`
-- tablePrefix: `comments_` (plus `engagement_` tables)
+- tablePrefix: `comments_`; engagement storage uses `comments_engagement_*` table names.
 
 ## Initialization state
 
 This module is in **initialization state** for greenfield deployments:
 
-1. **Baseline** — `database/ddl/baseline/{engine}/0001_comments_baseline.sql` contains the full DDL snapshot.
-2. **Migrations** — `database/migrations/{engine}/` is reserved for post-GA incremental schema changes only. It is intentionally empty at initialization.
+1. **Baseline** - `database/ddl/baseline/postgres/0001_comments_baseline.sql` contains the authoritative DDL snapshot.
+2. **Migrations** - `database/migrations/postgres/` is reserved for post-GA incremental schema changes only. It is intentionally empty at initialization.
 3. **Drift** — run `pnpm db:drift:check` before release.
 
 ## Commands

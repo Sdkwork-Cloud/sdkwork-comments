@@ -27,25 +27,25 @@
       "lifecycle_status": "active"
     },
     {
-      "table_name": "engagement_reaction",
+      "table_name": "comments_engagement_reaction",
       "owner": "comments-platform",
       "compliance_level": "L2",
       "lifecycle_status": "active"
     },
     {
-      "table_name": "engagement_favorite",
+      "table_name": "comments_engagement_favorite",
       "owner": "comments-platform",
       "compliance_level": "L2",
       "lifecycle_status": "active"
     },
     {
-      "table_name": "engagement_visit_history",
+      "table_name": "comments_engagement_visit_history",
       "owner": "comments-platform",
       "compliance_level": "L2",
       "lifecycle_status": "active"
     },
     {
-      "table_name": "engagement_projection",
+      "table_name": "comments_engagement_projection",
       "owner": "comments-platform",
       "compliance_level": "L2",
       "lifecycle_status": "active"
