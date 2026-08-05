@@ -7,20 +7,7 @@
     ],
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "baseUrl": ".",
-    "paths": {
-      "@sdkwork/comments-contracts": [
-        "apps/sdkwork-comments-common/packages/sdkwork-comments-contracts/src/index.ts"
-      ],
-      "@sdkwork/comments-service": [
-        "apps/sdkwork-comments-common/packages/sdkwork-comments-service/src/index.ts"
-      ],
-      "@sdkwork/sdk-common": [
-        "../sdkwork-sdk-commons/sdkwork-sdk-common-typescript/src/index.ts"
-      ]
-    },
     "allowImportingTsExtensions": true,
-    "ignoreDeprecations": "6.0",
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
