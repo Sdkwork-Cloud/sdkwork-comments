@@ -5,6 +5,4 @@ export interface EngagementReactionDeleteResponse {
   targetId: string;
   reactionType: 'like';
   deleted: boolean;
-  /** Server-owned request correlation id. */
-  requestId: string;
 }

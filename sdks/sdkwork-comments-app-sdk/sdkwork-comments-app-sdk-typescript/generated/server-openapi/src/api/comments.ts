@@ -1,7 +1,7 @@
 import { appApiPath } from './paths';
-import type { HttpClient } from '../http/client';
+import type { ApiRequestOptions, HttpClient } from '../http/client';
 
-import type { CommentCreateRequest, CommentDeleteResponse, CommentReactionDeleteResponse, CommentReactionResponse, CommentReactionType, CommentResponse, CommentsListResponse, CommentStatus, CommentsThreadSummaryResponse, CommentUpdateRequest } from '../types';
+import type { Comment, CommentCreateRequest, CommentReactionResponse, CommentReactionType, CommentResponse, CommentStatus, CommentsThreadSummaryResponse, CommentUpdateRequest, PageInfo } from '../types';
 
 
 export class CommentsReactionsApi {
@@ -13,13 +13,13 @@ export class CommentsReactionsApi {
 
 
 /** Create or replace a comment reaction. */
-  async upsert(commentId: string, reactionType: CommentReactionType): Promise<CommentReactionResponse> {
-    return this.client.put<CommentReactionResponse>(appApiPath(`/comments/comments/${serializePathParameter(commentId, { name: 'commentId', style: 'simple', explode: false })}/reactions/${serializePathParameter(reactionType, { name: 'reactionType', style: 'simple', explode: false })}`));
+  async update(commentId: string, reactionType: CommentReactionType, requestOptions?: ApiRequestOptions): Promise<CommentReactionResponse> {
+    return this.client.request<CommentReactionResponse>(appApiPath(`/comments/comments/${serializePathParameter(commentId, { name: 'commentId', style: 'simple', explode: false })}/reactions/${serializePathParameter(reactionType, { name: 'reactionType', style: 'simple', explode: false })}`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'PUT' as any, sdkworkUnwrapKind: 'item' });
   }
 
 /** Delete a comment reaction. */
-  async delete(commentId: string, reactionType: CommentReactionType): Promise<CommentReactionDeleteResponse> {
-    return this.client.delete<CommentReactionDeleteResponse>(appApiPath(`/comments/comments/${serializePathParameter(commentId, { name: 'commentId', style: 'simple', explode: false })}/reactions/${serializePathParameter(reactionType, { name: 'reactionType', style: 'simple', explode: false })}`));
+  async delete(commentId: string, reactionType: CommentReactionType, requestOptions?: ApiRequestOptions): Promise<void> {
+    return this.client.request<void>(appApiPath(`/comments/comments/${serializePathParameter(commentId, { name: 'commentId', style: 'simple', explode: false })}/reactions/${serializePathParameter(reactionType, { name: 'reactionType', style: 'simple', explode: false })}`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'DELETE' as any });
   }
 }
 
@@ -38,28 +38,28 @@ export class CommentsCommentsApi {
 
 
 /** List comments in a thread. */
-  async list(threadId: string, params?: CommentsCommentsListParams): Promise<CommentsListResponse> {
+  async list(threadId: string, params?: CommentsCommentsListParams, requestOptions?: ApiRequestOptions): Promise<{ items: Comment[]; pageInfo: PageInfo; }> {
     const query = buildQueryString([
       { name: 'page', value: params?.page, style: 'form', explode: true, allowReserved: false },
       { name: 'page_size', value: params?.pageSize, style: 'form', explode: true, allowReserved: false },
       { name: 'status', value: params?.status, style: 'form', explode: true, allowReserved: false },
     ]);
-    return this.client.get<CommentsListResponse>(appendQueryString(appApiPath(`/comments/threads/${serializePathParameter(threadId, { name: 'threadId', style: 'simple', explode: false })}/comments`), query));
+    return this.client.request<{ items: Comment[]; pageInfo: PageInfo; }>(appendQueryString(appApiPath(`/comments/threads/${serializePathParameter(threadId, { name: 'threadId', style: 'simple', explode: false })}/comments`), query), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'GET' as any, sdkworkUnwrapKind: 'page' });
   }
 
 /** Create a comment in a thread. */
-  async create(threadId: string, body: CommentCreateRequest): Promise<CommentResponse> {
-    return this.client.post<CommentResponse>(appApiPath(`/comments/threads/${serializePathParameter(threadId, { name: 'threadId', style: 'simple', explode: false })}/comments`), body, undefined, undefined, 'application/json');
+  async create(threadId: string, body: CommentCreateRequest, requestOptions?: ApiRequestOptions): Promise<CommentResponse> {
+    return this.client.request<CommentResponse>(appApiPath(`/comments/threads/${serializePathParameter(threadId, { name: 'threadId', style: 'simple', explode: false })}/comments`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'POST' as any, body, contentType: 'application/json', sdkworkUnwrapKind: 'item' });
   }
 
 /** Update an existing comment. */
-  async update(commentId: string, body: CommentUpdateRequest): Promise<CommentResponse> {
-    return this.client.patch<CommentResponse>(appApiPath(`/comments/comments/${serializePathParameter(commentId, { name: 'commentId', style: 'simple', explode: false })}`), body, undefined, undefined, 'application/json');
+  async update(commentId: string, body: CommentUpdateRequest, requestOptions?: ApiRequestOptions): Promise<CommentResponse> {
+    return this.client.request<CommentResponse>(appApiPath(`/comments/comments/${serializePathParameter(commentId, { name: 'commentId', style: 'simple', explode: false })}`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'PATCH' as any, body, contentType: 'application/json', sdkworkUnwrapKind: 'item' });
   }
 
 /** Delete an existing comment. */
-  async delete(commentId: string): Promise<CommentDeleteResponse> {
-    return this.client.delete<CommentDeleteResponse>(appApiPath(`/comments/comments/${serializePathParameter(commentId, { name: 'commentId', style: 'simple', explode: false })}`));
+  async delete(commentId: string, requestOptions?: ApiRequestOptions): Promise<void> {
+    return this.client.request<void>(appApiPath(`/comments/comments/${serializePathParameter(commentId, { name: 'commentId', style: 'simple', explode: false })}`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'DELETE' as any });
   }
 }
 
@@ -72,19 +72,17 @@ export class CommentsThreadsApi {
 
 
 /** Get a comments thread summary. */
-  async summary(threadId: string): Promise<CommentsThreadSummaryResponse> {
-    return this.client.get<CommentsThreadSummaryResponse>(appApiPath(`/comments/threads/${serializePathParameter(threadId, { name: 'threadId', style: 'simple', explode: false })}/summary`));
+  async retrieve(threadId: string, requestOptions?: ApiRequestOptions): Promise<CommentsThreadSummaryResponse> {
+    return this.client.request<CommentsThreadSummaryResponse>(appApiPath(`/comments/threads/${serializePathParameter(threadId, { name: 'threadId', style: 'simple', explode: false })}/summary`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'GET' as any, sdkworkUnwrapKind: 'item' });
   }
 }
 
 export class CommentsApi {
-  private client: HttpClient;
   public readonly threads: CommentsThreadsApi;
   public readonly comments: CommentsCommentsApi;
   public readonly reactions: CommentsReactionsApi;
 
   constructor(client: HttpClient) {
-    this.client = client;
     this.threads = new CommentsThreadsApi(client);
     this.comments = new CommentsCommentsApi(client);
     this.reactions = new CommentsReactionsApi(client);

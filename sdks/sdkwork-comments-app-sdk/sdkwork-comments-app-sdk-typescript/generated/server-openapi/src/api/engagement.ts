@@ -1,7 +1,7 @@
 import { appApiPath } from './paths';
-import type { HttpClient } from '../http/client';
+import type { ApiRequestOptions, HttpClient } from '../http/client';
 
-import type { EngagementFavoriteDeleteResponse, EngagementFavoriteResponse, EngagementReactionDeleteResponse, EngagementReactionResponse, EngagementSummaryResponse, EngagementTargetKind, EngagementVisitCreateRequest, EngagementVisitListResponse, EngagementVisitResponse } from '../types';
+import type { EngagementFavoriteResponse, EngagementReactionResponse, EngagementSummaryResponse, EngagementTargetKind, EngagementVisit, EngagementVisitCreateRequest, EngagementVisitResponse, PageInfo } from '../types';
 
 
 export interface EngagementVisitsListParams {
@@ -20,19 +20,19 @@ export class EngagementVisitsApi {
 
 
 /** Record a visit for any supported content target. */
-  async create(targetKind: EngagementTargetKind, targetId: string, body: EngagementVisitCreateRequest): Promise<EngagementVisitResponse> {
-    return this.client.post<EngagementVisitResponse>(appApiPath(`/engagement/targets/${serializePathParameter(targetKind, { name: 'targetKind', style: 'simple', explode: false })}/${serializePathParameter(targetId, { name: 'targetId', style: 'simple', explode: false })}/visits`), body, undefined, undefined, 'application/json');
+  async create(targetKind: EngagementTargetKind, targetId: string, body: EngagementVisitCreateRequest, requestOptions?: ApiRequestOptions): Promise<EngagementVisitResponse> {
+    return this.client.request<EngagementVisitResponse>(appApiPath(`/engagement/targets/${serializePathParameter(targetKind, { name: 'targetKind', style: 'simple', explode: false })}/${serializePathParameter(targetId, { name: 'targetId', style: 'simple', explode: false })}/visits`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'POST' as any, body, contentType: 'application/json', sdkworkUnwrapKind: 'item' });
   }
 
 /** List the current user's cross-content visit history. */
-  async list(params?: EngagementVisitsListParams): Promise<EngagementVisitListResponse> {
+  async list(params?: EngagementVisitsListParams, requestOptions?: ApiRequestOptions): Promise<{ items: EngagementVisit[]; pageInfo: PageInfo; }> {
     const query = buildQueryString([
       { name: 'page', value: params?.page, style: 'form', explode: true, allowReserved: false },
       { name: 'page_size', value: params?.pageSize, style: 'form', explode: true, allowReserved: false },
       { name: 'target_kind', value: params?.targetKind, style: 'form', explode: true, allowReserved: false },
       { name: 'target_id', value: params?.targetId, style: 'form', explode: true, allowReserved: false },
     ]);
-    return this.client.get<EngagementVisitListResponse>(appendQueryString(appApiPath(`/engagement/visits`), query));
+    return this.client.request<{ items: EngagementVisit[]; pageInfo: PageInfo; }>(appendQueryString(appApiPath(`/engagement/visits`), query), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'GET' as any, sdkworkUnwrapKind: 'page' });
   }
 }
 
@@ -45,13 +45,13 @@ export class EngagementFavoritesApi {
 
 
 /** Favorite any supported content target. */
-  async upsert(targetKind: EngagementTargetKind, targetId: string): Promise<EngagementFavoriteResponse> {
-    return this.client.put<EngagementFavoriteResponse>(appApiPath(`/engagement/targets/${serializePathParameter(targetKind, { name: 'targetKind', style: 'simple', explode: false })}/${serializePathParameter(targetId, { name: 'targetId', style: 'simple', explode: false })}/favorites`));
+  async update(targetKind: EngagementTargetKind, targetId: string, requestOptions?: ApiRequestOptions): Promise<EngagementFavoriteResponse> {
+    return this.client.request<EngagementFavoriteResponse>(appApiPath(`/engagement/targets/${serializePathParameter(targetKind, { name: 'targetKind', style: 'simple', explode: false })}/${serializePathParameter(targetId, { name: 'targetId', style: 'simple', explode: false })}/favorites`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'PUT' as any, sdkworkUnwrapKind: 'item' });
   }
 
 /** Remove a favorite from any supported content target. */
-  async delete(targetKind: EngagementTargetKind, targetId: string): Promise<EngagementFavoriteDeleteResponse> {
-    return this.client.delete<EngagementFavoriteDeleteResponse>(appApiPath(`/engagement/targets/${serializePathParameter(targetKind, { name: 'targetKind', style: 'simple', explode: false })}/${serializePathParameter(targetId, { name: 'targetId', style: 'simple', explode: false })}/favorites`));
+  async delete(targetKind: EngagementTargetKind, targetId: string, requestOptions?: ApiRequestOptions): Promise<void> {
+    return this.client.request<void>(appApiPath(`/engagement/targets/${serializePathParameter(targetKind, { name: 'targetKind', style: 'simple', explode: false })}/${serializePathParameter(targetId, { name: 'targetId', style: 'simple', explode: false })}/favorites`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'DELETE' as any });
   }
 }
 
@@ -64,13 +64,13 @@ export class EngagementLikesApi {
 
 
 /** Like any supported content target. */
-  async upsert(targetKind: EngagementTargetKind, targetId: string): Promise<EngagementReactionResponse> {
-    return this.client.put<EngagementReactionResponse>(appApiPath(`/engagement/targets/${serializePathParameter(targetKind, { name: 'targetKind', style: 'simple', explode: false })}/${serializePathParameter(targetId, { name: 'targetId', style: 'simple', explode: false })}/likes`));
+  async update(targetKind: EngagementTargetKind, targetId: string, requestOptions?: ApiRequestOptions): Promise<EngagementReactionResponse> {
+    return this.client.request<EngagementReactionResponse>(appApiPath(`/engagement/targets/${serializePathParameter(targetKind, { name: 'targetKind', style: 'simple', explode: false })}/${serializePathParameter(targetId, { name: 'targetId', style: 'simple', explode: false })}/likes`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'PUT' as any, sdkworkUnwrapKind: 'item' });
   }
 
 /** Remove a like from any supported content target. */
-  async delete(targetKind: EngagementTargetKind, targetId: string): Promise<EngagementReactionDeleteResponse> {
-    return this.client.delete<EngagementReactionDeleteResponse>(appApiPath(`/engagement/targets/${serializePathParameter(targetKind, { name: 'targetKind', style: 'simple', explode: false })}/${serializePathParameter(targetId, { name: 'targetId', style: 'simple', explode: false })}/likes`));
+  async delete(targetKind: EngagementTargetKind, targetId: string, requestOptions?: ApiRequestOptions): Promise<void> {
+    return this.client.request<void>(appApiPath(`/engagement/targets/${serializePathParameter(targetKind, { name: 'targetKind', style: 'simple', explode: false })}/${serializePathParameter(targetId, { name: 'targetId', style: 'simple', explode: false })}/likes`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'DELETE' as any });
   }
 }
 
@@ -83,20 +83,18 @@ export class EngagementTargetsApi {
 
 
 /** Get cross-content engagement summary for a target. */
-  async summary(targetKind: EngagementTargetKind, targetId: string): Promise<EngagementSummaryResponse> {
-    return this.client.get<EngagementSummaryResponse>(appApiPath(`/engagement/targets/${serializePathParameter(targetKind, { name: 'targetKind', style: 'simple', explode: false })}/${serializePathParameter(targetId, { name: 'targetId', style: 'simple', explode: false })}/summary`));
+  async retrieve(targetKind: EngagementTargetKind, targetId: string, requestOptions?: ApiRequestOptions): Promise<EngagementSummaryResponse> {
+    return this.client.request<EngagementSummaryResponse>(appApiPath(`/engagement/targets/${serializePathParameter(targetKind, { name: 'targetKind', style: 'simple', explode: false })}/${serializePathParameter(targetId, { name: 'targetId', style: 'simple', explode: false })}/summary`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'GET' as any, sdkworkUnwrapKind: 'item' });
   }
 }
 
 export class EngagementApi {
-  private client: HttpClient;
   public readonly targets: EngagementTargetsApi;
   public readonly likes: EngagementLikesApi;
   public readonly favorites: EngagementFavoritesApi;
   public readonly visits: EngagementVisitsApi;
 
   constructor(client: HttpClient) {
-    this.client = client;
     this.targets = new EngagementTargetsApi(client);
     this.likes = new EngagementLikesApi(client);
     this.favorites = new EngagementFavoritesApi(client);

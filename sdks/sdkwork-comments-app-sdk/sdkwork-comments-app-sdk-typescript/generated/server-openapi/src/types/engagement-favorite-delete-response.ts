@@ -4,6 +4,4 @@ export interface EngagementFavoriteDeleteResponse {
   targetKind: EngagementTargetKind;
   targetId: string;
   deleted: boolean;
-  /** Server-owned request correlation id. */
-  requestId: string;
 }
